@@ -36,7 +36,7 @@ export const lessons = [
       "answer": "It gives this small printed cover enough pixels for detailed artwork and text. It does not add missing detail to a small source image."
     },
     "image": {
-      "src": "assets/turkey-escape-goal.png",
+      "src": "assets/turkey-escape-goal-rated.png",
       "alt": "Layout reference showing a title above two turkeys, a circle, an orange background, and autumn leaves.",
       "caption": "Use this image for the arrangement. It says Turkey Escape, but our tutorial title is Free Birds. The source artwork and small details will differ."
     },
@@ -52,7 +52,7 @@ export const lessons = [
         ],
         "images": [
           {
-            "src": "assets/turkey-escape-goal.png",
+            "src": "assets/turkey-escape-goal-rated.png",
             "alt": "Cover layout reference with a large title, two turkeys, a yellow circle, and falling leaves.",
             "caption": "This is the arrangement you’re working toward. Our title will be Free Birds."
           }
@@ -147,7 +147,7 @@ export const lessons = [
       "Replace selection"
     ],
     "steps": [
-      "Download the turkey source below. Keep your Free Birds cover open in Photopea.",
+      "Download the turkey source using the link at the top of this lesson. Keep your Free Birds cover open in Photopea.",
       "Choose File → Open & Place and select the source image. It should appear as a new layer inside your cover.",
       "If a transformation box appears, confirm it with the check mark or Enter. Rename the imported layer Source poster.",
       "Select Source poster in the Layers panel. Choose Magnetic Lasso from the selection tool menu.",
@@ -443,7 +443,7 @@ export const lessons = [
         ],
         "images": [
           {
-            "src": "assets/turkey-escape-goal.png",
+            "src": "assets/turkey-escape-goal-rated.png",
             "alt": "Layout reference with large characters below the title.",
             "caption": "Use this layout as a placement guide: large characters below, with room for the title above."
           }
@@ -996,26 +996,31 @@ export const lessons = [
   },
   {
     "id": "autumn-leaves",
-    "shortTitle": "Add autumn leaves",
-    "title": "Cut out and arrange three leaves",
-    "eyebrow": "SELECTION PRACTICE + TRANSFORM",
-    "goal": "Use your selection skills on another source image and add autumn details.",
-    "time": "12 min",
+    "shortTitle": "Leaves & final details",
+    "title": "Add leaves and the rating badge",
+    "eyebrow": "LEAVES + FINAL DETAILS",
+    "goal": "Arrange three autumn leaves, then place the Everyone badge on its own layer.",
+    "time": "16 min",
     "tools": [
       "Magnetic Lasso",
       "Unite and Subtract",
       "Copy and paste",
-      "Free Transform"
+      "Free Transform",
+      "File → Open & Place"
     ],
     "steps": [
-      "Download the leaf sheet below and open it with File → Open. Keep your cover open in its own tab.",
+      "Download the leaf sheet using the link at the top of this lesson, then open it with File → Open. Keep your cover open in its own tab.",
       "Choose Magnetic Lasso and Replace. Follow the boundary of one leaf and close the selection loop.",
       "Check that you selected the leaf shape, not a rectangle of white background. Use Subtract to remove selected white areas or Unite to restore missed leaf parts.",
       "Copy the selected leaf, immediately switch to Free Birds, and paste it onto a new layer.",
       "Use Free Transform to resize and rotate the leaf. Confirm the transformation and move it away from the title and important character details.",
-      "Repeat for two more leaves. Name the layers Leaf 1, Leaf 2, and Leaf 3, and try different sizes or angles."
+      "Repeat for two more leaves. Name the layers Leaf 1, Leaf 2, and Leaf 3, and try different sizes or angles.",
+      "Download the Everyone badge using the link at the top of this lesson. In your Free Birds cover, choose File → Open & Place and select the badge. Confirm with the check mark or Enter, then name its layer Rating badge.",
+      "Select Rating badge and choose Edit → Free Transform. Link the width and height proportions, then resize the badge to about 8–10% of the cover’s width. Keep it upright and avoid stretching it.",
+      "Move the badge into the bottom-left corner with a small margin from both edges. Keep the title and important character details clear.",
+      "Confirm the transformation with the check mark or Enter. Leave Rating badge visible on its own layer above the background."
     ],
-    "checkpoint": "Three separate leaves sit around the artwork without white rectangles or blocked title letters.",
+    "checkpoint": "Three separate leaves frame the artwork, and the Everyone badge sits upright in the bottom-left corner on its own layer. The title and important character details remain clear.",
     "help": [
       {
         "question": "My leaf has a white rectangle around it.",
@@ -1028,6 +1033,10 @@ export const lessons = [
       {
         "question": "I keep moving the turkey instead of a leaf.",
         "answer": "Click the correct Leaf layer in the Layers panel before using Move or Free Transform."
+      },
+      {
+        "question": "My badge looks stretched or covers too much of the artwork.",
+        "answer": "Undo or cancel the transformation. Select Rating badge, link width and height, and resize again from a corner. Aim for about one-tenth of the cover’s width and leave a small margin at the bottom-left."
       }
     ],
     "curious": {
@@ -1043,6 +1052,10 @@ export const lessons = [
       {
         "href": "assets/falling-leaves.png",
         "label": "Download the leaf sheet"
+      },
+      {
+        "href": "assets/e-for-everyone.png",
+        "label": "Download the Everyone badge"
       }
     ],
     "sections": [
@@ -1082,9 +1095,25 @@ export const lessons = [
         ],
         "images": [
           {
-            "src": "assets/turkey-escape-goal.png",
+            "src": "assets/turkey-escape-goal-rated.png",
             "alt": "Layout reference with three autumn leaves arranged around the characters and title.",
             "caption": "Use the leaf placement as a guide: leave the title and character faces clear. This reference says Turkey Escape; your title is Free Birds."
+          }
+        ]
+      },
+      {
+        "title": "Add the Everyone rating badge",
+        "steps": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "images": [
+          {
+            "src": "assets/e-for-everyone.png",
+            "alt": "Black-and-white Everyone ESRB badge with a large letter E.",
+            "caption": "Place the badge upright in the bottom-left corner. Keep its proportions linked when resizing, and leave it on its own Rating badge layer."
           }
         ]
       }
@@ -1103,14 +1132,14 @@ export const lessons = [
       "File → Save as PSD"
     ],
     "steps": [
-      "Zoom out to see the whole cover. Check the title, character placement, circle, and leaf edges.",
-      "Use the eye icons to hide and show one leaf and the turkeys. Each should be separate from the background.",
-      "Check the stack: the title and leaves are visible, Birds is above Yellow circle, Source poster is hidden, and the orange Background is visible at the bottom.",
+      "Zoom out to see the whole cover. Check the title, character placement, circle, leaf edges, and Everyone badge in the bottom-left corner.",
+      "Use the eye icons to hide and show one leaf, the turkeys, and Rating badge. Each should be separate from the background. Finish with them visible.",
+      "Check the stack: the title, leaves, and Rating badge are visible, Birds is above Yellow circle, Source poster is hidden, and the orange Background is visible at the bottom.",
       "Choose File → Save as PSD.",
       "Name the file Lastname_FreeBirds.psd and find it in your downloads or chosen save folder.",
       "Save again whenever you make later changes. Keep the PSD for your next lesson."
     ],
-    "checkpoint": "You have a saved .psd file containing separate birds, leaves, painted circle, background, and editable text layers.",
+    "checkpoint": "You have a saved .psd file containing separate birds, leaves, Rating badge, painted circle, background, and editable text layers.",
     "help": [
       {
         "question": "I saved a PNG. Is that enough?",
@@ -1137,7 +1166,7 @@ export const lessons = [
           {
             "src": "assets/layer-order.png",
             "alt": "Layers panel showing Birds above the circle, the original poster hidden, and orange Background visible.",
-            "caption": "Check this relationship in your file: Birds above Yellow circle, Source poster hidden, and Background visible. Your finished file also has a title layer and three leaf layers."
+            "caption": "Check this relationship in your file: Birds above Yellow circle, Source poster hidden, and Background visible. Your finished file also has a title layer, three leaf layers, and a Rating badge layer."
           }
         ]
       },
@@ -1168,11 +1197,11 @@ export const lessons = [
       "Save your latest changes as a PSD before exporting.",
       "Choose File → Export As → PNG.",
       "Keep the full image dimensions and choose Save. Name the picture Lastname_FreeBirds.png.",
-      "Open the exported picture and check that Free Birds, both bird cutouts, the pale yellow circle, and three leaves are visible.",
+      "Open the exported picture and check that Free Birds, both bird cutouts, the pale yellow circle, three leaves, and the Everyone badge are visible.",
       "Be ready to explain how you used a selection, how layer order changed the cover, and why the title is readable.",
       "Keep both files. Next week, use these same techniques to build a cover for your own Halloween game."
     ],
-    "checkpoint": "Your PNG opens correctly, and your separate PSD is saved for future edits.",
+    "checkpoint": "Your PNG opens correctly with the Everyone badge visible, and your separate PSD is saved for future edits.",
     "help": [
       {
         "question": "Why can I not edit the title in the exported PNG?",
@@ -1188,7 +1217,7 @@ export const lessons = [
       "answer": "You can reuse the process: plan the canvas, select source artwork, combine layers, resize carefully, add readable text, then save an editable file and export a picture."
     },
     "image": {
-      "src": "assets/turkey-escape-goal.png",
+      "src": "assets/turkey-escape-goal-rated.png",
       "alt": "Layout reference showing a title above two turkeys, a circle, an orange background, and autumn leaves.",
       "caption": "Use this image for the arrangement. It says Turkey Escape, but our tutorial title is Free Birds. The source artwork and small details will differ."
     },
@@ -1209,7 +1238,7 @@ export const lessons = [
         ],
         "images": [
           {
-            "src": "assets/turkey-escape-goal.png",
+            "src": "assets/turkey-escape-goal-rated.png",
             "alt": "Layout reference showing a title above two turkeys, a circle, an orange background, and autumn leaves.",
             "caption": "Use this image for the arrangement. It says Turkey Escape, but our tutorial title is Free Birds. The source artwork and small details will differ."
           }

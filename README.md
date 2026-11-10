@@ -1,10 +1,12 @@
-# Game Cover Workshop — Free Birds
+# Make a Game Cover — Free Birds
 
 A 16-lesson Photopea tutorial for first-time users in the Vidyas repository. Students follow their teacher to make a **Free Birds** game cover while learning selections, layers, color fills, transforms, alignment, editable text, and exports. Numbered instructions, checkpoints, troubleshooting, downloadable source files, and illustrated walkthroughs support the shared lesson and remain available for independent practice.
 
-The interface uses playful, restrained game styling with readable directions and four collapsible stages: Get started, Select the characters, Build the cover, and Save & export. The current lesson's stage opens automatically. All 16 lessons use sequential sections: 37 substeps with 25 reference-image placements drawn from 17 unique assets. Each figure stays visible in the page alongside or below its matching instructions. There is no carousel or image switching; zoom is optional for inspecting small details. Completing a step is distinct from viewing the next step without marking it complete.
+The interface is a plain illustrated classroom guide: warm white, dark text, thin dividers, and one burnt-orange accent. The opening `#overview` page shows the source poster beside the updated cover reference with an Everyone rating badge. Choose **Start with the canvas** to begin; click the **Make a Game Cover** site title or **Project overview** to return to the opening page. The contents organize 16 lessons into seven groups: Canvas & background, Cut out the birds, Place the characters, Create the circle, Add the title, Leaves & details, and Save & export. The current lesson's group opens automatically.
 
-The supplied artwork titled **Turkey Escape** is a **layout reference**, not an exact image students must reproduce. It demonstrates the arrangement of the title, two birds, circle, and leaves. The tutorial's title is **Free Birds**, and its source artwork and small details can differ from the reference.
+All 16 lessons use sequential sections: 38 substeps with 26 reference-image placements drawn from 18 unique used assets. Each figure stays visible in the page alongside or below its matching instructions. There is no carousel or image switching; zoom is optional for inspecting small details. Completing a step is distinct from viewing the next step without marking it complete.
+
+The supplied artwork titled **Turkey Escape** is a **layout reference**, not an exact image students must reproduce. The current reference includes the title, two birds, circle, leaves, and Everyone badge. The tutorial's title is **Free Birds**, and its source artwork and small details can differ from the reference. The original reference image is preserved separately.
 
 This is a standalone static website: HTML, CSS, JavaScript, and local images. It requires no package installation, build command, database, account system, or API key.
 
@@ -23,11 +25,13 @@ This is a standalone static website: HTML, CSS, JavaScript, and local images. It
 11. Select the words, choose Anton, and enlarge the title.
 12. Make the title cream and position it.
 13. Add a maroon **#701818**, **13 px**, **Outside**, **100% opacity** stroke, then **save the PSD before continuing**.
-14. Select and arrange three leaves.
-15. Check the layers and save the editable PSD.
-16. Export a PNG and explain the design choices.
+14. Select and arrange three leaves, then add the Everyone badge on its own layer.
+15. Check the layers, including the visible Rating badge layer, and save the editable PSD.
+16. Export a PNG containing the badge and explain the design choices.
 
 Step 13 has an explicit save reminder and an **I saved my PSD — continue** button. Students must save in Photopea themselves; the tutorial cannot verify that a PSD was downloaded. They save again before the final export.
+
+In step 14, students download `assets/e-for-everyone.png`, place it inside the cover, resize it with linked proportions, and position it upright in the bottom-left corner. It remains editable as a separate **Rating badge** layer. The later PSD and PNG checks include the badge.
 
 ## Preview locally
 
@@ -71,7 +75,7 @@ The included `vercel.json` selects Other, skips installation and the build, and 
 
 Within each lesson, include every top-level instruction index exactly once and in order across its sections. For example, if a lesson has five instructions, sections could reference `[0, 1]`, `[2]`, and `[3, 4]`; do not duplicate or omit an index. Place each image in the section containing the action it illustrates. Multiple images in a section all remain visible.
 
-Keep existing lesson identifiers and instruction indices stable when updating wording or rearranging the presentation: saved progress refers to the lesson ID and each instruction's position in its top-level `steps` array. When adding an image, put the file in `assets/` and use a relative path to it. Legacy lesson-level `image` and `images` fields are fallbacks only for lessons without `sections`; edit the section images for the current walkthroughs.
+Keep existing lesson identifiers and instruction indices stable when updating wording or rearranging the presentation: saved progress refers to the lesson ID and each instruction's position in its top-level `steps` array. Hash routes preserve these lesson IDs, and `#overview` identifies the project overview. Opening the site without a lesson hash shows the overview; an existing lesson hash still opens that lesson directly. When adding an image, put the file in `assets/` and use a relative path to it. Legacy lesson-level `image` and `images` fields are fallbacks only for lessons without `sections`; edit the section images for the current walkthroughs.
 
 If Node.js is installed, an optional JavaScript syntax check is available without installing any packages:
 
@@ -85,14 +89,18 @@ This checks `app.js` and `lessons.js`; it is not a build step.
 
 The tutorial stores the current step, completed lessons, and checked instructions in the current browser's `localStorage`. There is no server or teacher dashboard collecting progress. Progress stays on that browser and device; it does not follow a student between computers. Clearing browser data can remove it.
 
-Use the tutorial's **Reset progress** action to clear completed lessons and checked instructions and return to the first lesson in that browser. This does not change the website files or any Photopea artwork students have saved. Photopea work must be saved separately as an editable PSD.
+When new instructions are added to an existing lesson, a previously completed lesson returns to incomplete if those new instructions have not been checked. Its existing checked actions remain available. This makes the added badge instructions visible as unfinished work for returning students.
+
+Use the tutorial's **Reset progress** action to clear completed lessons and checked instructions and return to the project overview in that browser. This does not change the website files or any Photopea artwork students have saved. Photopea work must be saved separately as an editable PSD.
 
 ## Included images
 
 | File | Purpose |
 | --- | --- |
 | `assets/turkey-source.webp` | Source turkey artwork for selection and copying |
-| `assets/turkey-escape-goal.png` | Turkey Escape artwork used only as a layout reference for Free Birds |
+| `assets/turkey-escape-goal-rated.png` | Current Turkey Escape layout reference with the Everyone badge; used on the overview and in lessons |
+| `assets/turkey-escape-goal.png` | Original layout reference preserved separately from the updated version |
+| `assets/e-for-everyone.png` | Everyone badge students place on a separate Rating badge layer |
 | `assets/falling-leaves.png` | Lasso-selection practice |
 | `assets/selection-tools.png` | Labeled selection tools and modes |
 | `assets/toolbar-reference.png` | Labeled toolbar reference |

@@ -1,13 +1,17 @@
-import { lessons } from './lessons.js?v=3';
+import { lessons } from './lessons.js?v=10';
 
 const $ = (selector) => document.querySelector(selector);
 const STORAGE_KEY = 'cover-lab-turkey-escape-v1';
-const ids = new Set(lessons.map((lesson) => lesson.id));
+const lessonIds = new Set(lessons.map((lesson) => lesson.id));
+const ids = new Set(['overview', ...lessonIds]);
 const chapters = [
-  { name: 'Get started', start: 0, end: 2 },
-  { name: 'Select the characters', start: 2, end: 6 },
-  { name: 'Build the cover', start: 6, end: 13 },
-  { name: 'Save & export', start: 13, end: 16 }
+  { name: 'Canvas & background', start: 0, end: 2 },
+  { name: 'Cut out the birds', start: 2, end: 5 },
+  { name: 'Place the characters', start: 5, end: 6 },
+  { name: 'Create the circle', start: 6, end: 9 },
+  { name: 'Add the title', start: 9, end: 13 },
+  { name: 'Leaves & details', start: 13, end: 14 },
+  { name: 'Save & export', start: 14, end: 16 }
 ];
 const chapterIndexFor = (id) => {
   const index = lessons.findIndex((lesson) => lesson.id === id);
@@ -29,8 +33,8 @@ try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') || {}; } cat
 const readHash = () => { try { return decodeURIComponent(location.hash.slice(1)); } catch { return ''; } };
 const hashId = readHash();
 const state = {
-  current: ids.has(hashId) ? hashId : ids.has(saved.current) ? saved.current : lessons[0].id,
-  completed: new Set(Array.isArray(saved.completed) ? saved.completed.filter((id) => ids.has(id)) : []),
+  current: ids.has(hashId) ? hashId : 'overview',
+  completed: new Set(Array.isArray(saved.completed) ? saved.completed.filter((id) => lessonIds.has(id) && Array.isArray(saved.tasks?.[id]) && lessons.find((lesson) => lesson.id === id).steps.every((_, index) => saved.tasks[id].includes(index))) : []),
   tasks: saved.tasks && typeof saved.tasks === 'object' && !Array.isArray(saved.tasks) ? saved.tasks : {}
 };
 if (!ids.has(hashId)) history.replaceState(null, '', `#${state.current}`);
@@ -66,6 +70,8 @@ function renderNav() {
     const linksId = `${prefix}-chapter-${chapterIndex}`;
     return `<section class="nav-chapter${current ? ' is-current' : ''}" aria-label="${esc(chapter.name)}"><button type="button" class="nav-chapter-heading" data-chapter="${chapterIndex}" aria-expanded="${open}" aria-controls="${linksId}"><span class="chapter-number">${String(chapterIndex + 1).padStart(2, '0')}</span><span>${esc(chapter.name)}</span><span class="chapter-count" aria-label="${completed} of ${items.length} steps complete">${completed}/${items.length}</span></button><div class="chapter-links" id="${linksId}"${open ? '' : ' hidden'}>${items.map((lesson, itemIndex) => `<a class="nav-step${state.current === lesson.id ? ' active' : ''}${state.completed.has(lesson.id) ? ' completed' : ''}" href="#${lesson.id}" data-step="${lesson.id}"${state.current === lesson.id ? ' aria-current="step"' : ''}><span class="nav-number">${state.completed.has(lesson.id) ? icon('check') : String(chapter.start + itemIndex + 1).padStart(2, '0')}</span><span>${esc(lesson.shortTitle)}</span></a>`).join('')}</div></section>`;
   }).join('');
+  $('#overview-link').classList.toggle('active', state.current === 'overview');
+  if (state.current === 'overview') $('#overview-link').setAttribute('aria-current', 'page'); else $('#overview-link').removeAttribute('aria-current');
   $('#desktop-nav').innerHTML = markup('desktop');
   $('#mobile-nav').innerHTML = markup('mobile');
   $('#progress-count').textContent = `${state.completed.size} / ${lessons.length}`;
@@ -79,7 +85,7 @@ function renderNav() {
   const activeLink = $('#desktop-nav .nav-step.active');
   if (activeLink?.getClientRects().length) activeLink.scrollIntoView({ block: 'nearest', inline: 'nearest' });
 }
-const imageDimensions = {"assets/text-size.png":[208,112],"assets/oval-before-shift.png":[952,1152],"assets/birds-selected.png":[1446,1290],"assets/alignment-tools-labeled.png":[2170,725],"assets/type-tool.png":[138,122],"assets/stroke-settings.png":[1370,1270],"assets/falling-leaves.png":[1254,1254],"assets/toolbar-reference.png":[887,1774],"assets/turkey-source.webp":[1200,1800],"assets/stroke-menu.png":[368,812],"assets/turkey-escape-goal.png":[1055,1491],"assets/workspace.png":[2284,1504],"assets/layer-order.png":[558,426],"assets/centered-circle.png":[842,1240],"assets/ellipse-selection.png":[516,406],"assets/text-color.png":[334,178],"assets/selection-tools.png":[1333,1180]};
+const imageDimensions = {"assets/e-for-everyone.png":[363,550],"assets/text-size.png":[208,112],"assets/oval-before-shift.png":[952,1152],"assets/birds-selected.png":[1446,1290],"assets/alignment-tools-labeled.png":[2170,725],"assets/type-tool.png":[138,122],"assets/stroke-settings.png":[1370,1270],"assets/falling-leaves.png":[1254,1254],"assets/toolbar-reference.png":[887,1774],"assets/turkey-source.webp":[1200,1800],"assets/stroke-menu.png":[368,812],"assets/turkey-escape-goal-rated.png":[1055,1491],"assets/workspace.png":[2284,1504],"assets/layer-order.png":[558,426],"assets/centered-circle.png":[842,1240],"assets/ellipse-selection.png":[516,406],"assets/text-color.png":[334,178],"assets/selection-tools.png":[1333,1180]};
 function sectionsFor(lesson) {
   return lesson.sections || [{ title: lesson.shortTitle, steps: lesson.steps.map((_, index) => index), images: lesson.images || (lesson.image ? [lesson.image] : []) }];
 }
@@ -111,9 +117,18 @@ function updateFooter() {
   $('#complete').innerHTML = completedAll && index === lessons.length - 1 ? `${icon('check')} Workshop complete` : `${lesson.saveCheckpoint ? 'I saved my PSD — continue' : state.completed.has(lesson.id) ? 'Continue' : index === lessons.length - 1 ? 'Finish this workshop' : 'Complete step'} ${icon('arrow')}`;
 }
 function render() {
+  const isOverview = state.current === 'overview';
+  $('#project-overview').hidden = !isOverview;
+  $('#lesson-content').hidden = isOverview;
+  if (isOverview) {
+    document.title = 'Make a Game Cover · Free Birds';
+    renderNav();
+    persist();
+    return;
+  }
   const lesson = currentLesson(), index = lessons.indexOf(lesson);
-  document.title = `${lesson.shortTitle} · Free Birds · Game Cover Workshop`;
-  $('#chapter-label').textContent = `Stage ${chapterIndexFor(lesson.id) + 1} · ${chapters.find((chapter) => index >= chapter.start && index < chapter.end).name}`;
+  document.title = `${lesson.shortTitle} · Make a Game Cover`;
+  $('#chapter-label').textContent = `${String(chapterIndexFor(lesson.id) + 1).padStart(2, '0')} / ${chapters[chapterIndexFor(lesson.id)].name.toUpperCase()}`;
   $('#lesson-position').textContent = `Step ${String(index + 1).padStart(2, '0')} of ${lessons.length}`;
   $('#lesson-eyebrow').textContent = lesson.eyebrow;
   $('#lesson-title').textContent = lesson.title;
@@ -140,7 +155,7 @@ function goTo(id, { focus = true } = {}) {
   $('#step-dialog').close();
   render();
   window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-  if (focus) $('#lesson-title').focus({ preventScroll: true });
+  if (focus) $(id === 'overview' ? '#overview-title' : '#lesson-title').focus({ preventScroll: true });
 }
 function openMedia({ src, title, alt, caption }, opener = document.activeElement) {
   mediaOpener = opener;
@@ -156,7 +171,8 @@ function openMedia({ src, title, alt, caption }, opener = document.activeElement
 const files = [
   { src: 'assets/turkey-source.webp', title: 'The turkey source', text: 'Use File → Open & Place to add it to your cover.', name: 'Turkeys.webp' },
   { src: 'assets/falling-leaves.png', title: 'Falling leaves', text: 'Six separate leaves for selection practice.', name: 'Falling-leaves.png' },
-  { src: 'assets/turkey-escape-goal.png', title: 'The layout reference', text: 'Our tutorial title is Free Birds. Use this layout as a guide.', name: 'Cover-layout-reference.png' }
+  { src: 'assets/e-for-everyone.png', title: 'Everyone rating badge', text: 'Place this in the lower-left corner as a final detail.', name: 'E-for-everyone.png' },
+  { src: 'assets/turkey-escape-goal-rated.png', title: 'The layout reference', text: 'Our tutorial title is Free Birds. Use this layout as a guide.', name: 'Cover-layout-reference.png' }
 ];
 const guides = [
   { src: 'assets/selection-tools.png', title: 'Selection tools & modes', text: 'Replace, Unite, Subtract, and Intersect.' },
@@ -231,7 +247,8 @@ document.addEventListener('click', (event) => {
   const related = event.target.closest('[data-help-step]');
   if (related) { $('#resource-dialog').close(); goTo(related.dataset.helpStep); return; }
   const action = event.target.closest('[data-action]')?.dataset.action;
-  if (action === 'goal') openMedia({ src: 'assets/turkey-escape-goal.png', title: 'Our layout reference', alt: 'Game cover layout reference', caption: 'Use the arrangement as a guide. Our tutorial title is Free Birds. Your source artwork and small details can look different.' });
+  if (action === 'goal') openMedia({ src: 'assets/turkey-escape-goal-rated.png', title: 'Our layout reference', alt: 'Game cover layout reference', caption: 'Use the arrangement as a guide. Our tutorial title is Free Birds. Your source artwork and small details can look different.' });
+  if (action === 'start') goTo(lessons[0].id);
   if (action === 'resources') openResources();
   if (action === 'all-help') openResources('help');
   if (action === 'steps') {
@@ -240,7 +257,7 @@ document.addEventListener('click', (event) => {
     $('#step-dialog').showModal();
     $('#mobile-nav .nav-step.active')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }
-  if (action === 'reset') { state.completed.clear(); state.tasks = {}; goTo(lessons[0].id); notify('Progress reset. Your Photopea files are not affected.'); }
+  if (action === 'reset') { state.completed.clear(); state.tasks = {}; goTo('overview'); notify('Progress reset. Your Photopea files are not affected.'); }
 });
 document.addEventListener('input', (event) => { if (event.target.id === 'help-query') renderHelpResults(event.target.value); });
 $('.resource-tabs').addEventListener('keydown', (event) => {
