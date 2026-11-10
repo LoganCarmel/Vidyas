@@ -4,10 +4,10 @@ const $ = (selector) => document.querySelector(selector);
 const STORAGE_KEY = 'cover-lab-turkey-escape-v1';
 const ids = new Set(lessons.map((lesson) => lesson.id));
 const chapters = [
-  { name: 'Setup', start: 0, end: 2 },
-  { name: 'Characters', start: 2, end: 6 },
-  { name: 'Cover design', start: 6, end: 13 },
-  { name: 'Finish', start: 13, end: 16 }
+  { name: 'Get started', start: 0, end: 2 },
+  { name: 'Select the characters', start: 2, end: 6 },
+  { name: 'Build the cover', start: 6, end: 13 },
+  { name: 'Save & export', start: 13, end: 16 }
 ];
 const chapterIndexFor = (id) => {
   const index = lessons.findIndex((lesson) => lesson.id === id);
@@ -105,15 +105,15 @@ function updateFooter() {
   const lesson = currentLesson(), index = lessons.indexOf(lesson), completedAll = state.completed.size === lessons.length;
   $('#previous').disabled = index === 0;
   $('#next').hidden = index === lessons.length - 1;
-  $('#next').innerHTML = `Skip ahead <span aria-hidden="true">→</span>`;
+  $('#next').innerHTML = `View next step <span aria-hidden="true">→</span>`;
   $('#next-title').textContent = lessons[index + 1]?.shortTitle || 'Your next creation';
   $('#complete').disabled = completedAll && index === lessons.length - 1;
   $('#complete').innerHTML = completedAll && index === lessons.length - 1 ? `${icon('check')} Workshop complete` : `${lesson.saveCheckpoint ? 'I saved my PSD — continue' : state.completed.has(lesson.id) ? 'Continue' : index === lessons.length - 1 ? 'Finish this workshop' : 'Complete step'} ${icon('arrow')}`;
 }
 function render() {
   const lesson = currentLesson(), index = lessons.indexOf(lesson);
-  document.title = `${lesson.shortTitle} · Free Birds · Cover Lab`;
-  $('#chapter-label').textContent = chapters.find((chapter) => index >= chapter.start && index < chapter.end).name;
+  document.title = `${lesson.shortTitle} · Free Birds · Game Cover Workshop`;
+  $('#chapter-label').textContent = `Stage ${chapterIndexFor(lesson.id) + 1} · ${chapters.find((chapter) => index >= chapter.start && index < chapter.end).name}`;
   $('#lesson-position').textContent = `Step ${String(index + 1).padStart(2, '0')} of ${lessons.length}`;
   $('#lesson-eyebrow').textContent = lesson.eyebrow;
   $('#lesson-title').textContent = lesson.title;
@@ -126,7 +126,7 @@ function render() {
   $('#save-checkpoint').hidden = !lesson.saveCheckpoint;
   $('#lesson-downloads').innerHTML = (lesson.downloads || []).map((file) => `<a class="download-button" href="${esc(file.href)}" download>${icon('download')}${esc(file.label)}</a>`).join('');
   $('#lesson-help').innerHTML = lesson.help.map(({ question, answer }) => `<details><summary>${esc(question)}</summary><p>${esc(answer)}</p></details>`).join('');
-  $('#lesson-curious').innerHTML = `<details class="curious-card"><summary><span class="curious-label">A little curious?</span>${esc(lesson.curious.question)}</summary><p>${esc(lesson.curious.answer)}</p></details>`;
+  $('#lesson-curious').innerHTML = `<details class="curious-card"><summary><span class="curious-label">Why does this work?</span>${esc(lesson.curious.question)}</summary><p>${esc(lesson.curious.answer)}</p></details>`;
   updateFooter();
   $('.nav-caption span').textContent = `${lessons.length} STEPS`;
   renderNav();

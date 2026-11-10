@@ -1,8 +1,8 @@
-# Free Birds — Photopea Cover Lab
+# Game Cover Workshop — Free Birds
 
-A self-paced, 16-lesson beginner tutorial in the Vidyas repository. Students make a **Free Birds** game cover in Photopea while learning selections, layers, color fills, transforms, alignment, editable text, and exports. The site provides numbered instructions, checkpoints, troubleshooting, downloadable source files, and illustrated walkthroughs.
+A 16-lesson Photopea tutorial for first-time users in the Vidyas repository. Students follow their teacher to make a **Free Birds** game cover while learning selections, layers, color fills, transforms, alignment, editable text, and exports. Numbered instructions, checkpoints, troubleshooting, downloadable source files, and illustrated walkthroughs support the shared lesson and remain available for independent practice.
 
-All 16 lessons use sequential sections: 37 substeps with 25 reference-image placements drawn from 17 unique assets. Each figure stays visible in the page alongside or below its matching instructions. There is no carousel or image switching; zoom is optional for inspecting small details. Four collapsible chapters—Setup, Characters, Cover design, and Finish—organize navigation, and the current lesson's chapter opens automatically. The primary completion action is distinct from skipping ahead.
+The interface uses playful, restrained game styling with readable directions and four collapsible stages: Get started, Select the characters, Build the cover, and Save & export. The current lesson's stage opens automatically. All 16 lessons use sequential sections: 37 substeps with 25 reference-image placements drawn from 17 unique assets. Each figure stays visible in the page alongside or below its matching instructions. There is no carousel or image switching; zoom is optional for inspecting small details. Completing a step is distinct from viewing the next step without marking it complete.
 
 The supplied artwork titled **Turkey Escape** is a **layout reference**, not an exact image students must reproduce. It demonstrates the arrangement of the title, two birds, circle, and leaves. The tutorial's title is **Free Birds**, and its source artwork and small details can differ from the reference.
 
