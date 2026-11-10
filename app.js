@@ -1,4 +1,4 @@
-import { lessons } from './lessons.js';
+import { lessons } from './lessons.js?v=3';
 
 const $ = (selector) => document.querySelector(selector);
 const STORAGE_KEY = 'cover-lab-turkey-escape-v1';
@@ -39,7 +39,6 @@ let navigationLesson = state.current;
 let resourceTab = 'files';
 let toastTimer;
 let mediaOpener;
-const imageChoices = {};
 
 function persist() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ current: state.current, completed: [...state.completed], tasks: state.tasks })); } catch { /* The lesson remains usable without persistent storage. */ }
@@ -80,23 +79,27 @@ function renderNav() {
   const activeLink = $('#desktop-nav .nav-step.active');
   if (activeLink?.getClientRects().length) activeLink.scrollIntoView({ block: 'nearest', inline: 'nearest' });
 }
-function renderInstructions() {
-  const lesson = currentLesson(), checked = taskSet(lesson);
-  $('#instructions').innerHTML = lesson.steps.map((step, index) => `<li class="instruction${checked.has(index) ? ' done' : ''}"><button class="instruction-toggle" data-task="${index}" aria-pressed="${checked.has(index)}" aria-label="${checked.has(index) ? 'Uncheck' : 'Check off'} instruction ${index + 1}">${checked.has(index) ? icon('check') : index + 1}</button><p>${format(step)}</p></li>`).join('');
-  $('#instruction-count').textContent = `${checked.size} of ${lesson.steps.length} checked`;
+const imageDimensions = {"assets/text-size.png":[208,112],"assets/oval-before-shift.png":[952,1152],"assets/birds-selected.png":[1446,1290],"assets/alignment-tools-labeled.png":[2170,725],"assets/type-tool.png":[138,122],"assets/stroke-settings.png":[1370,1270],"assets/falling-leaves.png":[1254,1254],"assets/toolbar-reference.png":[887,1774],"assets/turkey-source.webp":[1200,1800],"assets/stroke-menu.png":[368,812],"assets/turkey-escape-goal.png":[1055,1491],"assets/workspace.png":[2284,1504],"assets/layer-order.png":[558,426],"assets/centered-circle.png":[842,1240],"assets/ellipse-selection.png":[516,406],"assets/text-color.png":[334,178],"assets/selection-tools.png":[1333,1180]};
+function sectionsFor(lesson) {
+  return lesson.sections || [{ title: lesson.shortTitle, steps: lesson.steps.map((_, index) => index), images: lesson.images || (lesson.image ? [lesson.image] : []) }];
 }
-function renderVisual(lesson) {
-  const gallery = lesson.images || (lesson.image ? [lesson.image] : []);
-  if (gallery.length) {
-    const selected = Math.min(imageChoices[lesson.id] || 0, gallery.length - 1);
-    const image = gallery[selected], isCover = image.src.includes('goal');
-    const galleryNav = gallery.length > 1 ? `<div class="gallery-nav"><span>More views</span>${gallery.map((item, index) => `<button data-gallery="${index}" aria-pressed="${index === selected}" aria-label="Show reference image ${index + 1} of ${gallery.length}"><img src="${esc(item.src)}" alt=""><span aria-hidden="true">${index + 1}</span></button>`).join('')}</div>` : '';
-    return `<section class="visual-card"><div class="visual-header"><span>${isCover ? 'The layout reference' : 'Visual reference'}${gallery.length > 1 ? ` · ${selected + 1}/${gallery.length}` : ''}</span><button class="zoom-link" data-media="${esc(image.src)}" data-media-title="${esc(lesson.shortTitle)}" data-media-alt="${esc(image.alt)}" data-media-caption="${esc(image.caption)}">${icon('expand')} Zoom in</button></div><div class="reference-stage"><button class="image-zoom-button" data-media="${esc(image.src)}" data-media-title="${esc(lesson.shortTitle)}" data-media-alt="${esc(image.alt)}" data-media-caption="${esc(image.caption)}" aria-label="Enlarge visual reference"><img class="reference-image${isCover ? ' cover-image' : ''}" src="${esc(image.src)}" alt="${esc(image.alt)}"></button></div>${galleryNav}<p class="visual-caption">${esc(image.caption)}</p></section>`;
-  }
-  if (lesson.id === 'save-psd') {
-    return `<section class="visual-card"><div class="visual-header"><span>Keep both versions</span><span>PSD + PNG</span></div><div class="reference-stage"><div class="layer-demo"><div class="layer-row"><span class="layer-dot turkey">PSD</span>Editable artwork<small>YOUR WORKING FILE</small></div><div class="layer-row"><span class="layer-dot circle">PNG</span>One finished picture<small>YOUR EXPORT</small></div></div></div><p class="visual-caption">Save a PSD to keep your layers and text. Export a PNG when you need a picture to share.</p></section>`;
-  }
-  return `<section class="visual-card"><div class="visual-header"><span>Your title preview</span><span>Keep it editable</span></div><div class="reference-stage"><div class="demo-title outlined" aria-label="Cream Free Birds title with a maroon outline"><span>FREE</span><span>BIRDS</span></div></div><p class="visual-caption">A dark outline helps light letters stand out. Your font and arrangement can look different.</p></section>`;
+function renderReference(image, lesson, index) {
+  const [width, height] = imageDimensions[image.src] || [];
+  const title = image.title || lesson.shortTitle;
+  const cover = image.src.includes('goal');
+  const canvas = /centered-circle|oval-before-shift/.test(image.src);
+  return `<figure class="reference-figure${cover ? ' is-cover-reference' : ''}${canvas ? ' is-canvas-reference' : ''}"><div class="inline-reference-header"><span>Reference ${index + 1}</span><button class="zoom-link" data-media="${esc(image.src)}" data-media-title="${esc(title)}" data-media-alt="${esc(image.alt)}" data-media-caption="${esc(image.caption)}">${icon('expand')} Enlarge</button></div><button class="image-zoom-button" data-media="${esc(image.src)}" data-media-title="${esc(title)}" data-media-alt="${esc(image.alt)}" data-media-caption="${esc(image.caption)}" aria-label="Enlarge reference ${index + 1}: ${esc(image.alt)}"><img class="reference-image" src="${esc(image.src)}" alt="${esc(image.alt)}"${width ? ` width="${width}" height="${height}"` : ''}></button><figcaption>${esc(image.caption)}</figcaption></figure>`;
+}
+function renderInstructions() {
+  const lesson = currentLesson(), checked = taskSet(lesson), lessonIndex = lessons.indexOf(lesson);
+  $('#lesson-sections').innerHTML = sectionsFor(lesson).map((section, sectionIndex) => {
+    const references = section.images || [];
+    const wide = references.some((image) => (imageDimensions[image.src]?.[0] || 0) >= 1200 && !/turkey-source|falling-leaves/.test(image.src));
+    const label = `substep-${lesson.id}-${sectionIndex}`;
+    const instructions = section.steps.map((index) => `<li class="instruction${checked.has(index) ? ' done' : ''}"><button class="instruction-toggle" data-task="${index}" aria-pressed="${checked.has(index)}" aria-label="${checked.has(index) ? 'Uncheck' : 'Check off'} instruction ${index + 1}">${checked.has(index) ? icon('check') : index + 1}</button><p>${format(lesson.steps[index])}</p></li>`).join('');
+    return `<section class="walkthrough-section" aria-labelledby="${label}"><header class="walkthrough-section-header"><span class="substep-number">${lessonIndex + 1}.${sectionIndex + 1}</span><h2 id="${label}">${esc(section.title)}</h2></header><div class="walkthrough-content${references.length ? ' has-references' : ''}${wide ? ' has-wide-reference' : ''}"><div class="substep-instructions"><ol class="instructions">${instructions}</ol></div>${references.length ? `<div class="substep-references">${references.map((image, index) => renderReference(image, lesson, index)).join('')}</div>` : ''}</div></section>`;
+  }).join('');
+  $('#instruction-count').textContent = `${checked.size} of ${lesson.steps.length} actions checked`;
 }
 function updateFooter() {
   const lesson = currentLesson(), index = lessons.indexOf(lesson), completedAll = state.completed.size === lessons.length;
@@ -122,7 +125,6 @@ function render() {
   $('#checkpoint-text').textContent = lesson.checkpoint;
   $('#save-checkpoint').hidden = !lesson.saveCheckpoint;
   $('#lesson-downloads').innerHTML = (lesson.downloads || []).map((file) => `<a class="download-button" href="${esc(file.href)}" download>${icon('download')}${esc(file.label)}</a>`).join('');
-  $('#lesson-visual').innerHTML = renderVisual(lesson);
   $('#lesson-help').innerHTML = lesson.help.map(({ question, answer }) => `<details><summary>${esc(question)}</summary><p>${esc(answer)}</p></details>`).join('');
   $('#lesson-curious').innerHTML = `<details class="curious-card"><summary><span class="curious-label">A little curious?</span>${esc(lesson.curious.question)}</summary><p>${esc(lesson.curious.answer)}</p></details>`;
   updateFooter();
@@ -220,8 +222,6 @@ document.addEventListener('click', (event) => {
   if (task) { toggleTask(Number(task.dataset.task)); return; }
   const color = event.target.closest('[data-copy]');
   if (color) { copyColor(color.dataset.copy); return; }
-  const gallery = event.target.closest('[data-gallery]');
-  if (gallery) { imageChoices[state.current] = Number(gallery.dataset.gallery); $('#lesson-visual').innerHTML = renderVisual(currentLesson()); $(`[data-gallery="${gallery.dataset.gallery}"]`)?.focus({preventScroll:true}); return; }
   const media = event.target.closest('[data-media]');
   if (media) { openMedia({ src: media.dataset.media, title: media.dataset.mediaTitle, alt: media.dataset.mediaAlt, caption: media.dataset.mediaCaption }, media); return; }
   const close = event.target.closest('[data-close]');

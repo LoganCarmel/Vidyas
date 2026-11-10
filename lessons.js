@@ -39,7 +39,34 @@ export const lessons = [
       "src": "assets/turkey-escape-goal.png",
       "alt": "Layout reference showing a title above two turkeys, a circle, an orange background, and autumn leaves.",
       "caption": "Use this image for the arrangement. It says Turkey Escape, but our tutorial title is Free Birds. The source artwork and small details will differ."
-    }
+    },
+    "sections": [
+      {
+        "title": "Create your project and enter the canvas settings",
+        "steps": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "images": [
+          {
+            "src": "assets/turkey-escape-goal.png",
+            "alt": "Cover layout reference with a large title, two turkeys, a yellow circle, and falling leaves.",
+            "caption": "This is the arrangement you’re working toward. Our title will be Free Birds."
+          }
+        ]
+      },
+      {
+        "title": "See the whole canvas and save",
+        "steps": [
+          5,
+          6
+        ],
+        "images": []
+      }
+    ]
   },
   {
     "id": "orange-background",
@@ -79,7 +106,32 @@ export const lessons = [
       "src": "assets/toolbar-reference.png",
       "alt": "Photopea toolbar reference.",
       "caption": "Find the foreground color swatch and the Paint Bucket tool in your toolbar."
-    }
+    },
+    "sections": [
+      {
+        "title": "Choose the layer you will paint",
+        "steps": [
+          0
+        ],
+        "images": []
+      },
+      {
+        "title": "Choose orange and fill the background",
+        "steps": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "images": [
+          {
+            "src": "assets/toolbar-reference.png",
+            "alt": "Labeled Photopea toolbar identifying the foreground color swatch and Paint Bucket.",
+            "caption": "Find the foreground color swatch and Paint Bucket in the toolbar."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "select-first-turkey",
@@ -131,6 +183,38 @@ export const lessons = [
         "href": "assets/turkey-source.webp",
         "label": "Download the turkey source"
       }
+    ],
+    "sections": [
+      {
+        "title": "Place the source poster inside your cover",
+        "steps": [
+          0,
+          1,
+          2
+        ],
+        "images": [
+          {
+            "src": "assets/turkey-source.webp",
+            "alt": "The source poster containing the two turkey characters.",
+            "caption": "Use Open & Place to add this image as a layer inside your cover."
+          }
+        ]
+      },
+      {
+        "title": "Select the first bird",
+        "steps": [
+          3,
+          4,
+          5
+        ],
+        "images": [
+          {
+            "src": "assets/selection-tools.png",
+            "alt": "Labeled selection tools and modes, including Magnetic Lasso and Replace.",
+            "caption": "Choose Magnetic Lasso and Replace before outlining the first bird."
+          }
+        ]
+      }
     ]
   },
   {
@@ -173,7 +257,45 @@ export const lessons = [
       "src": "assets/selection-tools.png",
       "alt": "Selection controls showing Replace, Unite, Subtract, and Intersect.",
       "caption": "Check the active selection mode before drawing another outline."
-    }
+    },
+    "sections": [
+      {
+        "title": "Add the second bird to your selection",
+        "steps": [
+          0,
+          1
+        ],
+        "images": [
+          {
+            "src": "assets/selection-tools.png",
+            "alt": "Selection mode reference identifying Unite, Subtract, Replace, and Intersect.",
+            "caption": "Unite adds another area to the selection you already have."
+          }
+        ]
+      },
+      {
+        "title": "Remove unwanted background and restore missed parts",
+        "steps": [
+          2,
+          3,
+          4
+        ],
+        "images": [
+          {
+            "src": "assets/birds-selected.png",
+            "alt": "Both turkey characters outlined by a selection on the source poster.",
+            "caption": "Inspect the gaps between wings, bodies, and legs. Subtract background areas and Unite any missed parts."
+          }
+        ]
+      },
+      {
+        "title": "Check before copying",
+        "steps": [
+          5
+        ],
+        "images": []
+      }
+    ]
   },
   {
     "id": "copy-into-cover",
@@ -218,7 +340,32 @@ export const lessons = [
       "src": "assets/birds-selected.png",
       "alt": "Both bird shapes selected in the source poster.",
       "caption": "With both birds selected on Source poster, copy and paste inside the same document to make Birds."
-    }
+    },
+    "sections": [
+      {
+        "title": "Make a separate Birds layer",
+        "steps": [
+          0,
+          1,
+          2
+        ],
+        "images": [
+          {
+            "src": "assets/birds-selected.png",
+            "alt": "The selected bird shapes on the source poster before copying.",
+            "caption": "Copy these selected pixels, then paste immediately inside the same cover document."
+          }
+        ]
+      },
+      {
+        "title": "Hide the original poster and check the cutouts",
+        "steps": [
+          3,
+          4
+        ],
+        "images": []
+      }
+    ]
   },
   {
     "id": "resize-turkeys",
@@ -264,7 +411,45 @@ export const lessons = [
       "src": "assets/workspace.png",
       "alt": "Photopea workspace reference.",
       "caption": "Check the highlighted layer before you move, resize, or paint."
-    }
+    },
+    "sections": [
+      {
+        "title": "Check the selected layer",
+        "steps": [
+          0
+        ],
+        "images": [
+          {
+            "src": "assets/workspace.png",
+            "alt": "Photopea workspace with the Layers panel on the right.",
+            "caption": "Find the Layers panel on the right. Select Birds in your own document before transforming."
+          }
+        ]
+      },
+      {
+        "title": "Resize without stretching",
+        "steps": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "images": []
+      },
+      {
+        "title": "Place the characters and leave room for the title",
+        "steps": [
+          5
+        ],
+        "images": [
+          {
+            "src": "assets/turkey-escape-goal.png",
+            "alt": "Layout reference with large characters below the title.",
+            "caption": "Use this layout as a placement guide: large characters below, with room for the title above."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "gold-circle",
@@ -316,6 +501,38 @@ export const lessons = [
         "src": "assets/oval-before-shift.png",
         "alt": "An oval selection drawn before constraining it with Shift.",
         "caption": "An unrestricted drag makes an oval. Hold Shift during a new drag to make a circle."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Choose Ellipse Select on a new layer",
+        "steps": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "images": [
+          {
+            "src": "assets/ellipse-selection.png",
+            "alt": "Selection tool menu with Ellipse Select available.",
+            "caption": "Choose Ellipse Select from the selection tool menu."
+          }
+        ]
+      },
+      {
+        "title": "Try an oval, then hold Shift for a circle",
+        "steps": [
+          4,
+          5
+        ],
+        "images": [
+          {
+            "src": "assets/oval-before-shift.png",
+            "alt": "An oval selection drawn before constraining it with Shift.",
+            "caption": "An unrestricted drag makes an oval. Hold Shift during a new drag to make a circle."
+          }
+        ]
       }
     ]
   },
@@ -371,6 +588,37 @@ export const lessons = [
         "alt": "A filled pale yellow circle centered on the orange canvas.",
         "caption": "Fill first, center the painted circle, then deselect."
       }
+    ],
+    "sections": [
+      {
+        "title": "Fill the circular selection pale yellow",
+        "steps": [
+          0,
+          1,
+          2
+        ],
+        "images": []
+      },
+      {
+        "title": "Center the painted circle on the canvas",
+        "steps": [
+          3,
+          4,
+          5
+        ],
+        "images": [
+          {
+            "src": "assets/alignment-tools-labeled.png",
+            "alt": "Move tool alignment buttons with the second and sixth buttons labeled.",
+            "caption": "Use Center Horizontally second, then Center Vertically sixth."
+          },
+          {
+            "src": "assets/centered-circle.png",
+            "alt": "A filled pale yellow circle centered on the orange canvas.",
+            "caption": "Fill first, center the painted circle, then deselect."
+          }
+        ]
+      }
     ]
   },
   {
@@ -415,7 +663,26 @@ export const lessons = [
       "src": "assets/layer-order.png",
       "alt": "Layers panel showing Birds above the circle, the original poster hidden, and orange Background visible.",
       "caption": "The example uses Layer 2 for the circle and Layer 1 for the hidden poster. Keep the orange Background visible."
-    }
+    },
+    "sections": [
+      {
+        "title": "Order the layers and hide the source poster",
+        "steps": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "images": [
+          {
+            "src": "assets/layer-order.png",
+            "alt": "Layers panel showing Birds above the circle, the original poster hidden, and orange Background visible.",
+            "caption": "The example uses Layer 2 for the circle and Layer 1 for the hidden poster. Keep the orange Background visible."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "cream-title",
@@ -455,7 +722,38 @@ export const lessons = [
       "src": "assets/type-tool.png",
       "alt": "Photopea toolbar with the Type tool indicated.",
       "caption": "Choose T, click near the top of the cover, and type Free Birds."
-    }
+    },
+    "sections": [
+      {
+        "title": "Use the Type tool to create the title",
+        "steps": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "images": [
+          {
+            "src": "assets/type-tool.png",
+            "alt": "Photopea toolbar with the Type tool indicated.",
+            "caption": "Choose T, click near the top of the cover, and type Free Birds."
+          }
+        ]
+      },
+      {
+        "title": "Notice the default text size",
+        "steps": [
+          4
+        ],
+        "images": [
+          {
+            "src": "assets/text-size.png",
+            "alt": "The text size field showing a default size of 24 pixels.",
+            "caption": "At 24 px, the title can look tiny on this large canvas. You will highlight and enlarge the words in the next step."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "title-font-size",
@@ -500,7 +798,38 @@ export const lessons = [
       "src": "assets/text-size.png",
       "alt": "The text size field showing a default size of 24 pixels.",
       "caption": "Highlight the words first, then change the font family and size. Start around 200 px and adjust to fit."
-    }
+    },
+    "sections": [
+      {
+        "title": "Highlight the existing words",
+        "steps": [
+          0,
+          1
+        ],
+        "images": []
+      },
+      {
+        "title": "Choose the Anton font",
+        "steps": [
+          2
+        ],
+        "images": []
+      },
+      {
+        "title": "Enlarge the title and adjust it to fit",
+        "steps": [
+          3,
+          4
+        ],
+        "images": [
+          {
+            "src": "assets/text-size.png",
+            "alt": "The text size field showing a default size of 24 pixels.",
+            "caption": "Highlight the words first, then change the font family and size. Start around 200 px and adjust to fit."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "title-color-position",
@@ -546,7 +875,33 @@ export const lessons = [
       "src": "assets/text-color.png",
       "alt": "Text toolbar and color controls for changing highlighted text.",
       "caption": "With the title highlighted, change its text color. Adjust the size to fit your own cover."
-    }
+    },
+    "sections": [
+      {
+        "title": "Change the highlighted title to cream",
+        "steps": [
+          0,
+          1,
+          2
+        ],
+        "images": [
+          {
+            "src": "assets/text-color.png",
+            "alt": "Text toolbar and color controls for changing highlighted text.",
+            "caption": "With the title highlighted, change its text color. Adjust the size to fit your own cover."
+          }
+        ]
+      },
+      {
+        "title": "Finish editing and position the title",
+        "steps": [
+          3,
+          4,
+          5
+        ],
+        "images": []
+      }
+    ]
   },
   {
     "id": "title-stroke",
@@ -598,6 +953,44 @@ export const lessons = [
         "src": "assets/stroke-settings.png",
         "alt": "Stroke settings showing a maroon color, 13 pixel size, Outside position, and 100 percent opacity.",
         "caption": "Use maroon #701818, 13 px, Outside, and 100% opacity. Click OK, then save your PSD before continuing."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Open the Stroke effect for the title layer",
+        "steps": [
+          0,
+          1
+        ],
+        "images": [
+          {
+            "src": "assets/stroke-menu.png",
+            "alt": "The eff menu in the Layers panel with Stroke highlighted.",
+            "caption": "Select the Free Birds text layer, click eff, and choose Stroke."
+          }
+        ]
+      },
+      {
+        "title": "Set the maroon color and border size",
+        "steps": [
+          2,
+          3,
+          4
+        ],
+        "images": [
+          {
+            "src": "assets/stroke-settings.png",
+            "alt": "Stroke settings showing a maroon color, 13 pixel size, Outside position, and 100 percent opacity.",
+            "caption": "Use maroon #701818, 13 px, Outside, and 100% opacity. Click OK, then save your PSD before continuing."
+          }
+        ]
+      },
+      {
+        "title": "Save your work before continuing",
+        "steps": [
+          5
+        ],
+        "images": []
       }
     ]
   },
@@ -651,6 +1044,50 @@ export const lessons = [
         "href": "assets/falling-leaves.png",
         "label": "Download the leaf sheet"
       }
+    ],
+    "sections": [
+      {
+        "title": "Open the leaf source beside your cover",
+        "steps": [
+          0
+        ],
+        "images": [
+          {
+            "src": "assets/falling-leaves.png",
+            "alt": "Autumn leaf source sheet.",
+            "caption": "Select each leaf along its boundary so you leave the surrounding white background behind."
+          }
+        ]
+      },
+      {
+        "title": "Select a leaf and clean up its edges",
+        "steps": [
+          1,
+          2
+        ],
+        "images": [
+          {
+            "src": "assets/selection-tools.png",
+            "alt": "Labeled selection tools and the Replace, Unite, Subtract, and Intersect modes.",
+            "caption": "Use Replace to start the leaf selection. Subtract removes selected white background; Unite restores a missed part of the leaf."
+          }
+        ]
+      },
+      {
+        "title": "Paste, transform, and arrange three leaves",
+        "steps": [
+          3,
+          4,
+          5
+        ],
+        "images": [
+          {
+            "src": "assets/turkey-escape-goal.png",
+            "alt": "Layout reference with three autumn leaves arranged around the characters and title.",
+            "caption": "Use the leaf placement as a guide: leave the title and character faces clear. This reference says Turkey Escape; your title is Free Birds."
+          }
+        ]
+      }
     ]
   },
   {
@@ -687,7 +1124,33 @@ export const lessons = [
     "curious": {
       "question": "Why keep all these layers?",
       "answer": "Separate layers let you edit one part later: move a leaf, change the title, or resize the circle without rebuilding the whole cover."
-    }
+    },
+    "sections": [
+      {
+        "title": "Review the artwork and layer stack",
+        "steps": [
+          0,
+          1,
+          2
+        ],
+        "images": [
+          {
+            "src": "assets/layer-order.png",
+            "alt": "Layers panel showing Birds above the circle, the original poster hidden, and orange Background visible.",
+            "caption": "Check this relationship in your file: Birds above Yellow circle, Source poster hidden, and Background visible. Your finished file also has a title layer and three leaf layers."
+          }
+        ]
+      },
+      {
+        "title": "Save and locate the editable PSD",
+        "steps": [
+          3,
+          4,
+          5
+        ],
+        "images": []
+      }
+    ]
   },
   {
     "id": "export-cover",
@@ -728,6 +1191,38 @@ export const lessons = [
       "src": "assets/turkey-escape-goal.png",
       "alt": "Layout reference showing a title above two turkeys, a circle, an orange background, and autumn leaves.",
       "caption": "Use this image for the arrangement. It says Turkey Escape, but our tutorial title is Free Birds. The source artwork and small details will differ."
-    }
+    },
+    "sections": [
+      {
+        "title": "Save the PSD, then export a PNG",
+        "steps": [
+          0,
+          1,
+          2
+        ],
+        "images": []
+      },
+      {
+        "title": "Open the exported picture and check the result",
+        "steps": [
+          3
+        ],
+        "images": [
+          {
+            "src": "assets/turkey-escape-goal.png",
+            "alt": "Layout reference showing a title above two turkeys, a circle, an orange background, and autumn leaves.",
+            "caption": "Use this image for the arrangement. It says Turkey Escape, but our tutorial title is Free Birds. The source artwork and small details will differ."
+          }
+        ]
+      },
+      {
+        "title": "Keep both files and explain your choices",
+        "steps": [
+          4,
+          5
+        ],
+        "images": []
+      }
+    ]
   }
 ];

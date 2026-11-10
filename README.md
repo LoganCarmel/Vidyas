@@ -1,8 +1,8 @@
 # Free Birds — Photopea Cover Lab
 
-A self-paced, 16-step beginner tutorial in the Vidyas repository. Students make a **Free Birds** game cover in Photopea while learning selections, layers, color fills, transforms, alignment, editable text, and exports. The site provides numbered instructions, checkpoints, troubleshooting, downloadable source files, and zoomable visual references. Some lessons have a gallery of multiple views.
+A self-paced, 16-lesson beginner tutorial in the Vidyas repository. Students make a **Free Birds** game cover in Photopea while learning selections, layers, color fills, transforms, alignment, editable text, and exports. The site provides numbered instructions, checkpoints, troubleshooting, downloadable source files, and illustrated walkthroughs.
 
-The interface puts a large visual stage before the instructions when the layout stacks, with thumbnail buttons for switching between reference images. Four collapsible chapters—Setup, Characters, Cover design, and Finish—organize the lesson navigation; the current lesson's chapter opens automatically. Contextual help stays beside the work on wide screens or follows the instructions on smaller screens, and the primary completion action is distinct from skipping ahead.
+All 16 lessons use sequential sections: 37 substeps with 25 reference-image placements drawn from 17 unique assets. Each figure stays visible in the page alongside or below its matching instructions. There is no carousel or image switching; zoom is optional for inspecting small details. Four collapsible chapters—Setup, Characters, Cover design, and Finish—organize navigation, and the current lesson's chapter opens automatically. The primary completion action is distinct from skipping ahead.
 
 The supplied artwork titled **Turkey Escape** is a **layout reference**, not an exact image students must reproduce. It demonstrates the arrangement of the title, two birds, circle, and leaves. The tutorial's title is **Free Birds**, and its source artwork and small details can differ from the reference.
 
@@ -65,11 +65,13 @@ The included `vercel.json` selects Other, skips installation and the build, and 
 
 ## Edit the tutorial
 
-- **`lessons.js`** exports the 16 lessons. Each lesson contains its instructions, tools, checkpoint, troubleshooting, and visual references. A single reference uses `image`; a gallery uses `images`, an array of objects with `src`, `alt`, and `caption`. The outline lesson uses `saveCheckpoint: true` to display the explicit PSD save reminder.
-- **`index.html`** is the page entry point. **`app.js`** handles lesson navigation, reference galleries, help, checklists, and saved progress. The CSS files control the layout.
+- **`lessons.js`** exports the 16 lessons. Each lesson contains its top-level `steps` instruction array, tools, checkpoint, troubleshooting, and an ordered `sections` array for the illustrated walkthrough. Every section has a `title`, a `steps` array of zero-based indices into that lesson's top-level instructions, and an `images` array of objects with `src`, `alt`, and `caption`. A section may contain any number of images, including none. The outline lesson uses `saveCheckpoint: true` to display the explicit PSD save reminder.
+- **`index.html`** is the page entry point. **`app.js`** handles lesson navigation, illustrated sections, optional image zoom, help, checklists, and saved progress. The CSS files control the layout.
 - **`assets/`** contains the classroom source artwork, layout reference, selection-practice images, and walkthrough screenshots. Use relative image paths so the site works on a local server and its deployed domain.
 
-Keep an existing lesson's identifier stable when updating its wording, so previously saved progress continues to refer to that lesson. When adding an image, put the file in `assets/` and use a relative path to it.
+Within each lesson, include every top-level instruction index exactly once and in order across its sections. For example, if a lesson has five instructions, sections could reference `[0, 1]`, `[2]`, and `[3, 4]`; do not duplicate or omit an index. Place each image in the section containing the action it illustrates. Multiple images in a section all remain visible.
+
+Keep existing lesson identifiers and instruction indices stable when updating wording or rearranging the presentation: saved progress refers to the lesson ID and each instruction's position in its top-level `steps` array. When adding an image, put the file in `assets/` and use a relative path to it. Legacy lesson-level `image` and `images` fields are fallbacks only for lessons without `sections`; edit the section images for the current walkthroughs.
 
 If Node.js is installed, an optional JavaScript syntax check is available without installing any packages:
 
