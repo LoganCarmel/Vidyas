@@ -17,7 +17,7 @@ export const lessons = [
       "Choose Millimeters. Set Width to 129.5 and Height to 183.",
       "Check that the resolution still reads 300 and the dimensions still read 129.5 × 183 mm.",
       "Keep the background White, the mode RGB, and the depth 8 bit. Leave Artboards unchecked, then choose Create.",
-      "Zoom out until you can see the whole portrait canvas.",
+      "Choose the Zoom tool, the magnifying glass near the bottom of the toolbar. Hold Alt (Option on Mac) and click to zoom out until the whole canvas fits. Click without Alt to zoom in. When zoomed in, hold Space and drag to move your view.",
       "Choose File → Save as PSD and save a working copy named Lastname_FreeBirds.psd. Save again as you add to your cover."
     ],
     "checkpoint": "You have a tall white canvas named Free Birds.",
@@ -27,8 +27,8 @@ export const lessons = [
         "answer": "Changing the resolution can change the physical measurements. Set 300 first, then enter 129.5 mm and 183 mm again."
       },
       {
-        "question": "Why does the reference have a different title?",
-        "answer": "It is a layout reference. Our cover will say Free Birds. Use the reference to plan where the title, circle, birds, and leaves go rather than matching every detail."
+        "question": "Should my cover match the example exactly?",
+        "answer": "The finished example uses the same source images, colors, font, and techniques as this lesson. Use it to check your progress. Your leaf angles and exact placement can vary."
       }
     ],
     "curious": {
@@ -36,9 +36,9 @@ export const lessons = [
       "answer": "It gives this small printed cover enough pixels for detailed artwork and text. It does not add missing detail to a small source image."
     },
     "image": {
-      "src": "assets/turkey-escape-goal-rated.png",
-      "alt": "Layout reference showing a title above two turkeys, a circle, an orange background, and autumn leaves.",
-      "caption": "Use this image for the arrangement. It says Turkey Escape, but our tutorial title is Free Birds. The source artwork and small details will differ."
+      "src": "assets/free-birds-final-goal.png",
+      "alt": "Finished Free Birds cover with the original turkey cutouts, pale yellow circle, orange background, three added leaves, and Everyone badge.",
+      "caption": "Finished example made from the lesson’s original birds and leaf sheet, with Anton text, the specified colors, and the Everyone badge."
     },
     "sections": [
       {
@@ -52,9 +52,9 @@ export const lessons = [
         ],
         "images": [
           {
-            "src": "assets/turkey-escape-goal-rated.png",
-            "alt": "Cover layout reference with a large title, two turkeys, a yellow circle, and falling leaves.",
-            "caption": "This is the arrangement you’re working toward. Our title will be Free Birds."
+            "src": "assets/free-birds-final-goal.png",
+            "alt": "Finished Free Birds cover with a cream Anton title outlined in maroon above the original turkeys.",
+            "caption": "This is the finished Free Birds cover, made using the same images and techniques you will use."
           }
         ]
       },
@@ -82,8 +82,8 @@ export const lessons = [
     ],
     "steps": [
       "In the Layers panel, click the Background layer so it is highlighted.",
-      "Click the foreground color swatch near the bottom of the toolbar.",
-      "Enter #F25A00 in the color picker and confirm the color.",
+      "Click the foreground color swatch: the front square of the two overlapping color squares near the bottom of the toolbar.",
+      "In the color picker, find the field beside #. Replace its code with F25A00, then click OK to choose orange.",
       "Choose the Paint Bucket. If you see the Gradient tool instead, press and hold its toolbar button to find the bucket.",
       "Click once on the white canvas. The whole background should become orange."
     ],
@@ -143,16 +143,16 @@ export const lessons = [
     "tools": [
       "File → Open & Place",
       "Layers panel",
-      "Magnetic Lasso",
+      "Polygonal Lasso Select",
       "Replace selection"
     ],
     "steps": [
       "Download the turkey source using the link at the top of this lesson. Keep your Free Birds cover open in Photopea.",
       "Choose File → Open & Place and select the source image. It should appear as a new layer inside your cover.",
-      "If a transformation box appears, confirm it with the check mark or Enter. Rename the imported layer Source poster.",
-      "Select Source poster in the Layers panel. Choose Magnetic Lasso from the selection tool menu.",
+      "If a transformation box appears, confirm it with the check mark or Enter. In the Layers panel, double-click the imported layer’s name, type Source poster, and press Enter. Double-click the name, rather than the small image thumbnail.",
+      "Click Source poster in the Layers panel. Right-click the selection tool near the top of the left toolbar and choose Polygonal Lasso Select. The group may currently show a rectangle, ellipse, or lasso icon.",
       "Choose Replace in the selection controls at the top to start a new selection.",
-      "Zoom in and guide the lasso around the first bird’s visible outline. Return to the starting point to close the loop."
+      "Zoom in, then return to Polygonal Lasso Select. Click once on the first bird’s edge to begin. Keep clicking nearby points around its visible outline; use shorter gaps around curves. When you reach the start again, double-click to finish. A moving dotted outline should appear."
     ],
     "checkpoint": "Source poster is a layer inside your Free Birds document, and one bird has a moving dotted selection around it.",
     "help": [
@@ -162,11 +162,15 @@ export const lessons = [
       },
       {
         "question": "The lasso caught a large piece of background.",
-        "answer": "Undo the last selection or choose Select → Deselect and start again. Zoom in and follow the visible edge more closely."
+        "answer": "If you are still placing points, press Delete to remove the last point, then click a better one. If the selection is finished, choose Select → Deselect and start again. Use more closely spaced clicks around curves."
       },
       {
         "question": "The lasso will not start drawing.",
         "answer": "Confirm any open transformation first. Then select Source poster in the Layers panel and choose the selection tool again."
+      },
+      {
+        "question": "Do I hold the mouse button down?",
+        "answer": "Polygonal Lasso Select uses separate clicks: click, release, move, then click again. Ordinary Lasso Select works differently: hold the mouse button, draw a closed loop, and release. You will use that for small repairs next."
       }
     ],
     "curious": {
@@ -210,8 +214,8 @@ export const lessons = [
         "images": [
           {
             "src": "assets/selection-tools.png",
-            "alt": "Labeled selection tools and modes, including Magnetic Lasso and Replace.",
-            "caption": "Choose Magnetic Lasso and Replace before outlining the first bird."
+            "alt": "Labeled selection tools and modes, including Polygonal Lasso Select, Lasso Select, and Replace.",
+            "caption": "Choose Polygonal Lasso Select and Replace. Click points around the first bird, then double-click to finish."
           }
         ]
       }
@@ -225,6 +229,8 @@ export const lessons = [
     "goal": "Select both turkeys while leaving unwanted background outside the selection.",
     "time": "8 min",
     "tools": [
+      "Polygonal Lasso Select",
+      "Lasso Select",
       "Unite",
       "Subtract",
       "Replace",
@@ -232,21 +238,21 @@ export const lessons = [
     ],
     "steps": [
       "Keep the first turkey selected and change the selection mode to Unite.",
-      "Outline the second turkey and close the loop. Unite adds it to the selection you already have.",
+      "With Polygonal Lasso Select, click points around the second turkey’s visible outline, then double-click to finish. Unite adds it to the selection you already have.",
       "Look for background trapped inside the selection, especially gaps between the characters.",
-      "Choose Subtract and outline an unwanted background area to remove it from the selection.",
-      "If you missed part of a turkey, switch back to Unite and outline that part to add it.",
+      "Right-click the selection tool and choose ordinary Lasso Select. Choose Subtract at the top. Hold the mouse button and draw a small loop around unwanted background, returning to the start before releasing. This removes that area from your selection.",
+      "If you missed part of a turkey, switch back to Unite. With Lasso Select, hold the mouse button, draw a small closed loop around the missing part, and release to add it.",
       "Check both outlines before copying. Avoid using Replace now, because it starts a new selection."
     ],
     "checkpoint": "Both turkeys are selected, with obvious extra background removed.",
     "help": [
       {
         "question": "My first turkey stopped being selected.",
-        "answer": "You probably used Replace. Undo that selection, choose Unite, and add the second turkey again."
+        "answer": "You probably used Replace. Choose Edit → Step Backward to undo that selection, choose Unite, and add the second turkey again."
       },
       {
         "question": "Subtract removed part of the turkey.",
-        "answer": "Undo the last selection. Use a smaller loop around only the unwanted background, or switch to Unite to add the missing turkey part back."
+        "answer": "Choose Edit → Step Backward to undo the last selection. Use a smaller loop around only the unwanted background, or switch to Unite to add the missing turkey part back."
       }
     ],
     "curious": {
@@ -313,7 +319,7 @@ export const lessons = [
     "steps": [
       "Keep both birds selected and click Source poster in the Layers panel if it is not already selected.",
       "Choose Edit → Copy, then immediately choose Edit → Paste. Stay in the same Free Birds document.",
-      "Rename the pasted layer Birds. Choose Select → Deselect if a dotted selection remains.",
+      "Double-click the pasted layer’s name in the Layers panel, type Birds, and press Enter. Choose Select → Deselect if a dotted selection remains.",
       "Click the eye icon beside Source poster to hide the original poster. Leave the orange Background layer visible.",
       "Hide and show Birds once to check that the bird cutouts are separate from the orange background. Finish with Birds visible."
     ],
@@ -383,16 +389,16 @@ export const lessons = [
     "steps": [
       "Select the Birds layer in the Layers panel.",
       "Choose Edit → Free Transform.",
-      "Make sure the width and height proportions are linked so the characters keep their shape.",
+      "In the top bar, turn on Keep Aspect Ratio, the chain icon between W and H. This links width and height so the characters keep their shape; both percentages should change together as you resize.",
       "Drag a corner to change the size. Keep both characters inside the canvas and leave open space near the top.",
       "Confirm the transformation with the check mark or Enter.",
-      "Use the Move tool to place the turkeys around the lower middle of the cover."
+      "Choose the Move tool, the arrow at the top of the toolbar (V). Turn off Auto-Select in the top bar so Birds stays selected. Drag the turkeys into the lower middle of the cover."
     ],
     "checkpoint": "The turkeys are large enough to notice first, keep their original proportions, and leave space for a title.",
     "help": [
       {
         "question": "My turkeys look stretched.",
-        "answer": "Undo or cancel the transformation. Link width and height before resizing again."
+        "answer": "If the transformation is still open, press Escape to cancel it. If you already confirmed it, choose Edit → Step Backward. Turn on the chain icon between W and H before dragging a corner again."
       },
       {
         "question": "I cannot choose another tool.",
@@ -400,7 +406,7 @@ export const lessons = [
       },
       {
         "question": "The whole background moved.",
-        "answer": "Check the highlighted layer. Select Birds in the Layers panel before moving or transforming."
+        "answer": "Choose Edit → Step Backward to undo the move. With the Move tool active, turn off Auto-Select at the top, then select Birds in the Layers panel before dragging again."
       }
     ],
     "curious": {
@@ -443,7 +449,7 @@ export const lessons = [
         ],
         "images": [
           {
-            "src": "assets/turkey-escape-goal-rated.png",
+            "src": "assets/free-birds-final-goal.png",
             "alt": "Layout reference with large characters below the title.",
             "caption": "Use this layout as a placement guide: large characters below, with room for the title above."
           }
@@ -466,7 +472,7 @@ export const lessons = [
     ],
     "steps": [
       "Make sure Birds is the highlighted layer in the Layers panel.",
-      "Use the New Layer button in the Layers panel to create an empty pixel layer. Name it Yellow circle.",
+      "Click the page-shaped New Layer button at the bottom of the Layers panel, beside the trash can. Double-click the new layer’s name, type Yellow circle, and press Enter. Its checkerboard thumbnail means it is empty and transparent.",
       "Right-click the current selection tool in the toolbar and choose Ellipse Select from its menu. Use the selection tool, not the vector Ellipse shape tool.",
       "Choose Replace in the selection controls at the top. Each new outline will replace the previous one.",
       "Click and drag to start an oval. Keep the mouse button held down.",
@@ -552,8 +558,8 @@ export const lessons = [
     ],
     "steps": [
       "Keep the circle selection active and select the empty Yellow circle layer.",
-      "Set the foreground color to pale yellow, #F3EF9B. Choose Paint Bucket and click inside the circle to fill it.",
-      "Choose the Move tool and check that Yellow circle is still the highlighted layer.",
+      "Click the foreground color swatch. In the color picker’s # field, enter F3EF9B and click OK for pale yellow. Choose Paint Bucket and click inside the circle to fill it.",
+      "Choose the Move tool, the arrow at the top of the toolbar (V), and check that Yellow circle is still the highlighted layer.",
       "Open the Select menu and click All. A dotted outline should now run around the whole canvas, so the buttons will center the circle within the cover.",
       "Click Center Horizontally, the second alignment button, then Center Vertically, the sixth alignment button.",
       "Remove the dotted border: open the Select menu at the top of Photopea and click Deselect. Your yellow circle stays in place."
@@ -635,7 +641,7 @@ export const lessons = [
     ],
     "steps": [
       "Find Birds, Yellow circle, Source poster, and Background in the Layers panel.",
-      "Drag Yellow circle below Birds. Keep it above the orange Background layer.",
+      "In the Layers panel, drag the Yellow circle layer’s name downward. Release when the insertion line appears just below Birds. Keep Yellow circle above the orange Background layer.",
       "Turn off the eye beside Source poster. This hides the original poster, not the orange background.",
       "Leave Birds, Yellow circle, and Background visible.",
       "Check the canvas: the cutout birds should appear in front of the circle, surrounded by orange."
@@ -697,10 +703,10 @@ export const lessons = [
       "Layers panel"
     ],
     "steps": [
-      "Choose Select → Deselect if any selection outline remains.",
-      "Choose the Type tool, shown as T in the toolbar.",
-      "Click near the top of the cover and type Free Birds.",
-      "Look for the new text layer in the Layers panel. Keep the title on its own layer above the artwork.",
+      "In the Layers panel on the right, click Birds. Your new title layer will be created above it.",
+      "Choose the Type tool, shown as T in the toolbar on the left.",
+      "Click once near the top of the cover—do not drag a box—then type Free Birds.",
+      "Find the new text layer with a T thumbnail in the Layers panel. Leave the text edit open; you will highlight and style the words next.",
       "The words may be tiny if the default size is 24 px. That is expected; you will select and enlarge them next."
     ],
     "checkpoint": "The words Free Birds exist on their own editable text layer, even if they look small.",
@@ -711,7 +717,7 @@ export const lessons = [
       },
       {
         "question": "The title is behind the circle or birds.",
-        "answer": "Move the title layer above the artwork in the Layers panel."
+        "answer": "Click the check mark in the top options bar to finish editing the text, then drag its layer above Birds in the Layers panel."
       }
     ],
     "curious": {
@@ -721,7 +727,7 @@ export const lessons = [
     "image": {
       "src": "assets/type-tool.png",
       "alt": "Photopea toolbar with the Type tool indicated.",
-      "caption": "Choose T, click near the top of the cover, and type Free Birds."
+      "caption": "Choose T, click once near the top of the cover, and type Free Birds."
     },
     "sections": [
       {
@@ -736,7 +742,7 @@ export const lessons = [
           {
             "src": "assets/type-tool.png",
             "alt": "Photopea toolbar with the Type tool indicated.",
-            "caption": "Choose T, click near the top of the cover, and type Free Birds."
+            "caption": "Choose T, click once near the top of the cover, and type Free Birds."
           }
         ]
       },
@@ -771,9 +777,9 @@ export const lessons = [
     "steps": [
       "With the Type tool active, click inside Free Birds so the blinking text caret is inside the words.",
       "Press Ctrl+A on Windows or Cmd+A on Mac. The letters should be highlighted, not the whole canvas.",
-      "Change the font family to Anton.",
-      "Change the font size to 200 px as a starting point on this 1530-pixel-wide canvas.",
-      "If the title is too wide, reduce the font size until both words fit inside the cover with some space at the sides."
+      "In the Type options across the top, click the current font name. Type Anton in the font list’s search box, then click Anton in the results.",
+      "Click the number beside Size in the top options bar. Select the old number, type 300, and press Enter. The finished example uses 300 px on this canvas.",
+      "Aim for one line that fills most of the cover’s width, with space at both sides. Increase or decrease the size if needed."
     ],
     "checkpoint": "Free Birds is large, uses Anton, and remains editable text.",
     "help": [
@@ -787,7 +793,7 @@ export const lessons = [
       },
       {
         "question": "The title grew beyond the cover edges.",
-        "answer": "Keep the words highlighted and reduce the font size. The 200 px value is a starting point, not a required final size."
+        "answer": "Keep the words highlighted and reduce the font size. The 300 px example is a starting point; adjust it to fit your title."
       }
     ],
     "curious": {
@@ -797,7 +803,7 @@ export const lessons = [
     "image": {
       "src": "assets/text-size.png",
       "alt": "The text size field showing a default size of 24 pixels.",
-      "caption": "Highlight the words first, then change the font family and size. Start around 200 px and adjust to fit."
+      "caption": "Highlight the words first, then change the font family and size. The finished example uses 300 px; adjust to fit."
     },
     "sections": [
       {
@@ -825,7 +831,7 @@ export const lessons = [
           {
             "src": "assets/text-size.png",
             "alt": "The text size field showing a default size of 24 pixels.",
-            "caption": "Highlight the words first, then change the font family and size. Start around 200 px and adjust to fit."
+            "caption": "Highlight the words first, then change the font family and size. The finished example uses 300 px; adjust to fit."
           }
         ]
       }
@@ -848,7 +854,7 @@ export const lessons = [
       "Keep the title text highlighted. If needed, click inside the words with Type and select the text again.",
       "Click the text color swatch in the Type tool’s top bar.",
       "Enter #FFF0C2 and confirm the cream color.",
-      "Finish the text edit with the check mark, then choose the Move tool.",
+      "Click the check mark in the top options bar to finish editing the text, then choose the Move tool in the left toolbar.",
       "Select the title layer and position Free Birds above the characters. Keep the whole title inside the cover.",
       "Zoom out and check that the words are easy to read."
     ],
@@ -916,7 +922,7 @@ export const lessons = [
       "File → Save as PSD"
     ],
     "steps": [
-      "A stroke is a border around the text. Finish any active text edit, then select the Free Birds text layer in the Layers panel.",
+      "A stroke is a border around the text. If you are still editing the words, click the check mark in the top options bar first. Then click the Free Birds text layer in the Layers panel.",
       "Click eff, the effect button at the bottom of the Layers panel, and choose Stroke.",
       "In the Stroke settings, click the color swatch and choose maroon, #701818. Confirm the color picker.",
       "Set Size to 13 px, Position to Outside, and Opacity to 100%.",
@@ -1002,7 +1008,8 @@ export const lessons = [
     "goal": "Arrange three autumn leaves, then place the Everyone badge on its own layer.",
     "time": "16 min",
     "tools": [
-      "Magnetic Lasso",
+      "Lasso Select",
+      "Polygonal Lasso Select",
       "Unite and Subtract",
       "Copy and paste",
       "Free Transform",
@@ -1010,14 +1017,14 @@ export const lessons = [
     ],
     "steps": [
       "Download the leaf sheet using the link at the top of this lesson, then open it with File → Open. Keep your cover open in its own tab.",
-      "Choose Magnetic Lasso and Replace. Follow the boundary of one leaf and close the selection loop.",
+      "Right-click the selection tool and choose Lasso Select, then choose Replace at the top. Hold the mouse button down, trace one leaf, and release at the starting point. For Polygonal Lasso instead, click points around the leaf and double-click to finish.",
       "Check that you selected the leaf shape, not a rectangle of white background. Use Subtract to remove selected white areas or Unite to restore missed leaf parts.",
-      "Copy the selected leaf, immediately switch to Free Birds, and paste it onto a new layer.",
-      "Use Free Transform to resize and rotate the leaf. Confirm the transformation and move it away from the title and important character details.",
-      "Repeat for two more leaves. Name the layers Leaf 1, Leaf 2, and Leaf 3, and try different sizes or angles.",
+      "Choose Edit → Copy. Click the Free Birds document tab above the canvas, then choose Edit → Paste. The leaf appears on a new layer.",
+      "With the leaf layer selected, choose Edit → Free Transform. Click the chain icon between W and H at the top if it is off, to keep the proportions linked. Drag a corner to resize, drag just outside the box to rotate, and drag inside it to position the leaf away from the title and faces. Press Enter to confirm.",
+      "Return to the leaf-source tab, select another leaf, and copy it. Switch back to Free Birds to paste and transform it. Repeat until you have three leaves. Rename their layers Leaf 1, Leaf 2, and Leaf 3, and try different sizes or angles.",
       "Download the Everyone badge using the link at the top of this lesson. In your Free Birds cover, choose File → Open & Place and select the badge. Confirm with the check mark or Enter, then name its layer Rating badge.",
-      "Select Rating badge and choose Edit → Free Transform. Link the width and height proportions, then resize the badge to about 8–10% of the cover’s width. Keep it upright and avoid stretching it.",
-      "Move the badge into the bottom-left corner with a small margin from both edges. Keep the title and important character details clear.",
+      "Select Rating badge and choose Edit → Free Transform. Click the chain icon between W and H at the top if it is off, to keep the proportions linked. Drag a corner until the badge is about one-tenth as wide as the cover. Keep it upright and avoid stretching it.",
+      "Drag inside the transformation box to place the badge in the bottom-left corner, leaving a small margin from both edges. Keep the title and important character details clear.",
       "Confirm the transformation with the check mark or Enter. Leave Rating badge visible on its own layer above the background."
     ],
     "checkpoint": "Three separate leaves frame the artwork, and the Everyone badge sits upright in the bottom-left corner on its own layer. The title and important character details remain clear.",
@@ -1025,6 +1032,10 @@ export const lessons = [
       {
         "question": "My leaf has a white rectangle around it.",
         "answer": "The copied selection included the background. Undo the paste, return to the leaf sheet, and select the leaf boundary before copying again."
+      },
+      {
+        "question": "Why is there already a leaf touching the birds?",
+        "answer": "That orange leaf is part of the original poster. You can keep it with the bird cutout. Add three separate leaves from the leaf sheet, each on its own layer."
       },
       {
         "question": "Copy brought in a leaf I selected earlier.",
@@ -1095,9 +1106,9 @@ export const lessons = [
         ],
         "images": [
           {
-            "src": "assets/turkey-escape-goal-rated.png",
+            "src": "assets/free-birds-final-goal.png",
             "alt": "Layout reference with three autumn leaves arranged around the characters and title.",
-            "caption": "Use the leaf placement as a guide: leave the title and character faces clear. This reference says Turkey Escape; your title is Free Birds."
+            "caption": "Use the finished example to check leaf size and placement. Keep the title and character faces clear."
           }
         ]
       },
@@ -1135,9 +1146,9 @@ export const lessons = [
       "Zoom out to see the whole cover. Check the title, character placement, circle, leaf edges, and Everyone badge in the bottom-left corner.",
       "Use the eye icons to hide and show one leaf, the turkeys, and Rating badge. Each should be separate from the background. Finish with them visible.",
       "Check the stack: the title, leaves, and Rating badge are visible, Birds is above Yellow circle, Source poster is hidden, and the orange Background is visible at the bottom.",
-      "Choose File → Save as PSD.",
-      "Name the file Lastname_FreeBirds.psd and find it in your downloads or chosen save folder.",
-      "Save again whenever you make later changes. Keep the PSD for your next lesson."
+      "Choose File → Save as PSD. This downloads an editable copy of your project to your computer.",
+      "Wait for the download to finish. Find the .psd file in your browser’s download list or Downloads folder. If needed, rename it Lastname_FreeBirds.psd.",
+      "Use Save as PSD again whenever you make later changes. Next lesson, open Photopea, choose File → Open, and select your latest .psd file to continue editing."
     ],
     "checkpoint": "You have a saved .psd file containing separate birds, leaves, Rating badge, painted circle, background, and editable text layers.",
     "help": [
@@ -1194,9 +1205,9 @@ export const lessons = [
       "Saved PSD"
     ],
     "steps": [
-      "Save your latest changes as a PSD before exporting.",
+      "Save your latest changes as a PSD and wait for its download to finish before exporting.",
       "Choose File → Export As → PNG.",
-      "Keep the full image dimensions and choose Save. Name the picture Lastname_FreeBirds.png.",
+      "In the export window, keep Width and Height unchanged and click Save. Find the downloaded .png file and, if needed, rename it Lastname_FreeBirds.png.",
       "Open the exported picture and check that Free Birds, both bird cutouts, the pale yellow circle, three leaves, and the Everyone badge are visible.",
       "Be ready to explain how you used a selection, how layer order changed the cover, and why the title is readable.",
       "Keep both files. Next week, use these same techniques to build a cover for your own Halloween game."
@@ -1217,9 +1228,9 @@ export const lessons = [
       "answer": "You can reuse the process: plan the canvas, select source artwork, combine layers, resize carefully, add readable text, then save an editable file and export a picture."
     },
     "image": {
-      "src": "assets/turkey-escape-goal-rated.png",
-      "alt": "Layout reference showing a title above two turkeys, a circle, an orange background, and autumn leaves.",
-      "caption": "Use this image for the arrangement. It says Turkey Escape, but our tutorial title is Free Birds. The source artwork and small details will differ."
+      "src": "assets/free-birds-final-goal.png",
+      "alt": "Finished Free Birds cover with the original turkey cutouts, pale yellow circle, orange background, three added leaves, and Everyone badge.",
+      "caption": "Finished example made from the lesson’s original birds and leaf sheet, with Anton text, the specified colors, and the Everyone badge."
     },
     "sections": [
       {
@@ -1238,9 +1249,9 @@ export const lessons = [
         ],
         "images": [
           {
-            "src": "assets/turkey-escape-goal-rated.png",
-            "alt": "Layout reference showing a title above two turkeys, a circle, an orange background, and autumn leaves.",
-            "caption": "Use this image for the arrangement. It says Turkey Escape, but our tutorial title is Free Birds. The source artwork and small details will differ."
+            "src": "assets/free-birds-final-goal.png",
+            "alt": "Finished Free Birds cover with the original turkey cutouts, pale yellow circle, orange background, three added leaves, and Everyone badge.",
+            "caption": "Finished example made from the lesson’s original birds and leaf sheet, with Anton text, the specified colors, and the Everyone badge."
           }
         ]
       },

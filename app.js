@@ -1,4 +1,4 @@
-import { lessons } from './lessons.js?v=11';
+import { lessons } from './lessons.js?v=12';
 
 const $ = (selector) => document.querySelector(selector);
 const STORAGE_KEY = 'cover-lab-turkey-escape-v1';
@@ -84,7 +84,7 @@ function renderNav() {
   const activeLink = $('#desktop-nav .nav-step.active');
   if (activeLink?.getClientRects().length) activeLink.scrollIntoView({ block: 'nearest', inline: 'nearest' });
 }
-const imageDimensions = {"assets/e-for-everyone.png":[363,550],"assets/text-size.png":[208,112],"assets/oval-before-shift.png":[952,1152],"assets/birds-selected.png":[1446,1290],"assets/alignment-tools-labeled.png":[2170,725],"assets/type-tool.png":[138,122],"assets/stroke-settings.png":[1370,1270],"assets/falling-leaves.png":[1254,1254],"assets/toolbar-reference.png":[887,1774],"assets/turkey-source.webp":[1200,1800],"assets/stroke-menu.png":[368,812],"assets/turkey-escape-goal-rated.png":[1055,1491],"assets/workspace.png":[2284,1504],"assets/layer-order.png":[558,426],"assets/centered-circle.png":[842,1240],"assets/ellipse-selection.png":[516,406],"assets/text-color.png":[334,178],"assets/selection-tools.png":[1333,1180]};
+const imageDimensions = {"assets/e-for-everyone.png":[363,550],"assets/text-size.png":[208,112],"assets/oval-before-shift.png":[952,1152],"assets/birds-selected.png":[1446,1290],"assets/alignment-tools-labeled.png":[2170,725],"assets/type-tool.png":[138,122],"assets/stroke-settings.png":[1370,1270],"assets/falling-leaves.png":[1254,1254],"assets/toolbar-reference.png":[887,1774],"assets/turkey-source.webp":[1200,1800],"assets/stroke-menu.png":[368,812],"assets/free-birds-final-goal.png":[1530,2161],"assets/workspace.png":[2284,1504],"assets/layer-order.png":[558,426],"assets/centered-circle.png":[842,1240],"assets/ellipse-selection.png":[516,406],"assets/text-color.png":[334,178],"assets/selection-tools.png":[1333,1180]};
 function sectionsFor(lesson) {
   return lesson.sections || [{ title: lesson.shortTitle, steps: lesson.steps.map((_, index) => index), images: lesson.images || (lesson.image ? [lesson.image] : []) }];
 }
@@ -168,7 +168,7 @@ const files = [
   { src: 'assets/turkey-source.webp', title: 'The turkey source', text: 'Use File → Open & Place to add it to your cover.', name: 'Turkeys.webp' },
   { src: 'assets/falling-leaves.png', title: 'Falling leaves', text: 'Six separate leaves for selection practice.', name: 'Falling-leaves.png' },
   { src: 'assets/e-for-everyone.png', title: 'Everyone rating badge', text: 'Place this in the lower-left corner as a final detail.', name: 'E-for-everyone.png' },
-  { src: 'assets/turkey-escape-goal-rated.png', title: 'The layout reference', text: 'Our tutorial title is Free Birds. Use this layout as a guide.', name: 'Cover-layout-reference.png' }
+  { src: 'assets/free-birds-final-goal.png', title: 'The finished example', text: 'Built from the same images, colors, font, and tools as this lesson.', name: 'Free-Birds-finished-example.png' }
 ];
 const guides = [
   { src: 'assets/selection-tools.png', title: 'Selection tools & modes', text: 'Replace, Unite, Subtract, and Intersect.' },
@@ -243,7 +243,7 @@ document.addEventListener('click', (event) => {
   const related = event.target.closest('[data-help-step]');
   if (related) { $('#resource-dialog').close(); goTo(related.dataset.helpStep); return; }
   const action = event.target.closest('[data-action]')?.dataset.action;
-  if (action === 'goal') openMedia({ src: 'assets/turkey-escape-goal-rated.png', title: 'Our layout reference', alt: 'Game cover layout reference', caption: 'Use the arrangement as a guide. Our tutorial title is Free Birds. Your source artwork and small details can look different.' });
+  if (action === 'goal') openMedia({ src: 'assets/free-birds-final-goal.png', title: 'The finished Free Birds cover', alt: 'Finished Free Birds game cover', caption: 'Made from the same turkey source and leaf sheet using the techniques in this lesson. The title uses Anton at 300 px with a 13 px maroon stroke.' });
   if (action === 'start') goTo(lessons[0].id);
   if (action === 'resources') openResources();
   if (action === 'all-help') openResources('help');

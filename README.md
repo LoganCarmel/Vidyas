@@ -1,35 +1,37 @@
 # Make a Game Cover — Free Birds
 
-A 16-lesson Photopea tutorial for first-time users in the Vidyas repository. Students follow their teacher to make a **Free Birds** game cover while learning selections, layers, color fills, transforms, alignment, editable text, and exports. Numbered instructions, checkpoints, troubleshooting, downloadable source files, and illustrated walkthroughs support the shared lesson and remain available for independent practice.
+A 16-lesson Photopea tutorial for first-time users in the Vidyas repository. Students follow their teacher to make a **Free Birds** game cover while learning Polygonal Lasso and ordinary freehand Lasso selections, layers, color fills, transforms, alignment, editable text, and exports. Numbered instructions, checkpoints, troubleshooting, downloadable source files, and illustrated walkthroughs support the shared lesson and remain available for independent practice.
 
-The interface is a plain illustrated classroom guide: warm white, dark text, thin dividers, and one burnt-orange accent. The opening `#overview` page shows the source poster beside the updated cover reference with an Everyone rating badge. Choose **Start with the canvas** to begin; click the **Make a Game Cover** site title or **Project overview** to return to the opening page. The contents organize 16 lessons into seven groups: Canvas & background, Cut out the birds, Place the characters, Create the circle, Add the title, Leaves & details, and Save & export. The current lesson's group opens automatically.
+The interface is a plain illustrated classroom guide: warm white, dark text, thin dividers, and one burnt-orange accent. The opening `#overview` page shows the source poster beside the finished **Free Birds** cover with an Everyone rating badge. Choose **Start with the canvas** to begin; click the **Make a Game Cover** site title or **Project overview** to return to the opening page. The contents organize 16 lessons into seven groups: Canvas & background, Cut out the birds, Place the characters, Create the circle, Add the title, Leaves & details, and Save & export. The current lesson's group opens automatically.
 
 All 16 lessons use sequential sections: 38 substeps with 26 reference-image placements drawn from 18 unique used assets. Each figure stays visible in the page alongside or below its matching instructions. There is no carousel or image switching; zoom is optional for inspecting small details. Completing a step is distinct from viewing the next step without marking it complete.
 
-The supplied artwork titled **Turkey Escape** is a **layout reference**, not an exact image students must reproduce. The current reference includes the title, two birds, circle, leaves, and Everyone badge. The tutorial's title is **Free Birds**, and its source artwork and small details can differ from the reference. The original reference image is preserved separately.
+The finished example, `assets/free-birds-final-goal.png`, is made from the same supplied turkey poster, leaf sheet, and Everyone badge that students use. Its 1530 × 2161 px canvas has an orange **#F25A00** background, a pale yellow **#F3EF9B** circle, the two cutout birds, three added leaves, and the badge. The title uses **Anton at 300 px**, cream **#FFF0C2**, and a **13 px Outside** maroon **#701818** stroke. Students can build this composition through the lesson; their exact cutout edges and placements will vary. The earlier Turkey Escape images remain preserved in `assets/` and are unused by the current tutorial.
+
+Beginner instructions identify the selection-tool group, color picker's hex field, layer-name editing, New Layer button, and width/height chain. They also teach zooming, panning, correcting Polygonal Lasso points, undoing an action, and choosing the correct layer before moving artwork. Polygonal Lasso uses separate clicks around the birds; ordinary Lasso uses a held mouse button to draw small repair loops and select leaves.
 
 This is a standalone static website: HTML, CSS, JavaScript, and local images. It requires no package installation, build command, database, account system, or API key.
 
 ## Workshop progression
 
 1. Create and save the Free Birds canvas.
-2. Fill the background orange.
+2. Fill the background orange **#F25A00**.
 3. Place the source artwork and select one bird.
 4. Add the second bird and repair the selection.
 5. Copy and paste the selected birds onto their own layer.
 6. Resize and position the characters.
-7. Explore how Shift changes an elliptical selection.
-8. Fill the circle, then align it.
+7. Start dragging an oval, then hold Shift during the same drag to make a circle. Release the mouse before Shift.
+8. Fill the circle pale yellow **#F3EF9B**, then align it.
 9. Place the circle behind the birds.
 10. Create editable Free Birds text.
-11. Select the words, choose Anton, and enlarge the title.
-12. Make the title cream and position it.
+11. Select the words, choose Anton, and start with a **300 px** title.
+12. Make the title cream **#FFF0C2** and position it.
 13. Add a maroon **#701818**, **13 px**, **Outside**, **100% opacity** stroke, then **save the PSD before continuing**.
 14. Select and arrange three leaves, then add the Everyone badge on its own layer.
 15. Check the layers, including the visible Rating badge layer, and save the editable PSD.
 16. Export a PNG containing the badge and explain the design choices.
 
-Step 13 has an explicit save reminder and an **I saved my PSD — continue** button. Students must save in Photopea themselves; the tutorial cannot verify that a PSD was downloaded. They save again before the final export.
+Step 13 has an explicit save reminder and an **I saved my PSD — continue** button. Students must save in Photopea themselves; the tutorial cannot verify that a PSD was downloaded. They save again before the final export. Step 15 explains that **File → Save as PSD** downloads an editable copy, tells students to check the download list or Downloads folder, and shows how to resume next lesson with **File → Open** and their latest `.psd` file.
 
 In step 14, students download `assets/e-for-everyone.png`, place it inside the cover, resize it with linked proportions, and position it upright in the bottom-left corner. It remains editable as a separate **Rating badge** layer. The later PSD and PNG checks include the badge.
 
@@ -71,7 +73,7 @@ The included `vercel.json` selects Other, skips installation and the build, and 
 
 - **`lessons.js`** exports the 16 lessons. Each lesson contains its top-level `steps` instruction array, tools, checkpoint, troubleshooting, and an ordered `sections` array for the illustrated walkthrough. Every section has a `title`, a `steps` array of zero-based indices into that lesson's top-level instructions, and an `images` array of objects with `src`, `alt`, and `caption`. A section may contain any number of images, including none. The outline lesson uses `saveCheckpoint: true` to display the explicit PSD save reminder.
 - **`index.html`** is the page entry point. **`app.js`** handles lesson navigation, illustrated sections, optional image zoom, help, checklists, and saved progress. The CSS files control the layout.
-- **`assets/`** contains the classroom source artwork, layout reference, selection-practice images, and walkthrough screenshots. Use relative image paths so the site works on a local server and its deployed domain.
+- **`assets/`** contains the classroom source artwork, finished cover example, selection-practice images, and walkthrough screenshots. Use relative image paths so the site works on a local server and its deployed domain.
 
 Within each lesson, include every top-level instruction index exactly once and in order across its sections. For example, if a lesson has five instructions, sections could reference `[0, 1]`, `[2]`, and `[3, 4]`; do not duplicate or omit an index. Place each image in the section containing the action it illustrates. Multiple images in a section all remain visible.
 
@@ -91,15 +93,16 @@ The tutorial stores the current step, completed lessons, and checked instruction
 
 When new instructions are added to an existing lesson, a previously completed lesson returns to incomplete if those new instructions have not been checked. Its existing checked actions remain available. This makes the added badge instructions visible as unfinished work for returning students.
 
-Use the tutorial's **Reset progress** action to clear completed lessons and checked instructions and return to the project overview in that browser. This does not change the website files or any Photopea artwork students have saved. Photopea work must be saved separately as an editable PSD.
+Use the tutorial's **Reset progress** action to clear completed lessons and checked instructions and return to the project overview in that browser. This does not change the website files or any Photopea artwork students have saved. Photopea work must be saved separately as an editable PSD. To resume the artwork, open Photopea and use **File → Open** to load the latest saved PSD; reopening the tutorial restores only the tutorial's progress.
 
 ## Included images
 
 | File | Purpose |
 | --- | --- |
 | `assets/turkey-source.webp` | Source turkey artwork for selection and copying |
-| `assets/turkey-escape-goal-rated.png` | Current Turkey Escape layout reference with the Everyone badge; used on the overview and in lessons |
-| `assets/turkey-escape-goal.png` | Original layout reference preserved separately from the updated version |
+| `assets/free-birds-final-goal.png` | Reproducible finished Free Birds example made from the supplied sources; used on the overview and in lessons |
+| `assets/turkey-escape-goal-rated.png` | Earlier Turkey Escape layout reference with the Everyone badge; preserved and unused |
+| `assets/turkey-escape-goal.png` | Original Turkey Escape layout reference; preserved and unused |
 | `assets/e-for-everyone.png` | Everyone badge students place on a separate Rating badge layer |
 | `assets/falling-leaves.png` | Lasso-selection practice |
 | `assets/selection-tools.png` | Labeled selection tools and modes |
