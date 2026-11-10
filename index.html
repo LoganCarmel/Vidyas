@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f1e9">
+  <meta name="description" content="Make your first video game cover in Photopea. Follow the Free Birds workshop with clear steps, practice files, and help when you need it.">
+  <title>Free Birds · Cover Lab</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#lesson-title">Skip to the current step</a>
+  <aside class="sidebar" aria-label="Workshop navigation">
+    <a href="#create-canvas" class="brand" aria-label="Cover Lab home"><span class="brand-mark" aria-hidden="true">c<span>l</span></span><span>Cover Lab<small>PHOTOPEA FOR BEGINNERS</small></span></a>
+    <button class="project-preview" data-action="goal"><img src="assets/turkey-escape-goal.png" alt=""><span><small>OUR CLASS PROJECT</small><strong>Free Birds</strong><span>See the layout reference <span aria-hidden="true">↗</span></span></span></button>
+    <div class="nav-caption">THE WORKSHOP <span>16 STEPS</span></div>
+    <nav class="lesson-nav" id="desktop-nav" aria-label="Lesson steps"></nav>
+    <div class="sidebar-bottom"><div class="progress-label"><span>Your progress</span><strong id="progress-count">0 / 16</strong></div><div class="progress-track" role="progressbar" aria-label="Completed steps" aria-valuemin="0" aria-valuemax="16" aria-valuenow="0"><span id="progress-fill"></span></div><p>Saved on this device.</p><button class="reset-button" data-action="reset">Reset progress</button></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><div class="topbar-left"><button class="icon-button mobile-menu" data-action="steps" aria-label="Open lesson steps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><span class="workshop-label"><span class="status-dot"></span> PHOTOPEA WORKSHOP</span></div><div class="topbar-actions"><button class="text-button" data-action="resources"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6l2 2h8v12H4z"/></svg> Resources</button><a class="photopea-button" href="https://www.photopea.com/" target="_blank" rel="noopener noreferrer">Open Photopea <span aria-hidden="true">↗</span></a></div></header>
+    <main id="main-content">
+      <section class="lesson-heading"><div class="eyebrow" id="lesson-eyebrow">YOUR FIRST GAME COVER</div><div class="heading-row"><h1 id="lesson-title" tabindex="-1">Start your Free Birds cover</h1><span class="step-counter" id="step-counter">01 <span>/ 16</span></span></div><p class="lesson-goal" id="lesson-goal">A little at a time. A cover you made yourself.</p><div class="lesson-meta"><span id="lesson-time" class="time-label"></span><span class="meta-divider"></span><div id="lesson-tools" class="tool-chips"></div></div></section>
+      <div class="finish-banner" id="finish-banner" hidden><span class="finish-symbol" aria-hidden="true">✓</span><div><strong>You made a game cover.</strong><p>Keep your PSD and PNG. Your next project uses these skills to make something of your own.</p></div></div>
+      <div class="lesson-layout">
+        <section class="task-card" aria-label="Step instructions"><div class="card-topline"><span class="section-kicker">LET’S MAKE IT</span><span id="instruction-count" class="instruction-count"></span></div><ol id="instructions" class="instructions"></ol><section id="save-checkpoint" class="save-reminder" hidden><span aria-hidden="true">↓</span><div><h2>Save your work before we continue</h2><p>In Photopea, choose <strong>File → Save as PSD</strong>. Check that your latest .psd download has finished before continuing.</p></div></section><div class="checkpoint"><div class="checkpoint-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></div><div><h2>Check your work</h2><p id="checkpoint-text"></p></div></div><div id="lesson-downloads" class="lesson-downloads"></div></section>
+        <aside class="reference-column" aria-label="Visual reference and help"><div id="lesson-visual"></div><section class="help-card"><div class="help-heading"><span class="help-dot" aria-hidden="true">?</span><div><h2>Something not working?</h2><p>You’re probably one small fix away.</p></div></div><div id="lesson-help" class="help-list"></div><button class="all-help-button" data-action="all-help">Search all help <span aria-hidden="true">↗</span></button></section><div id="lesson-curious"></div></aside>
+      </div>
+      <footer class="lesson-footer"><button class="previous-button" id="previous"><span aria-hidden="true">←</span> Previous step</button><div class="footer-actions"><button class="next-button" id="next">Next step <span aria-hidden="true">→</span></button><button class="complete-button" id="complete">Mark done & continue <span aria-hidden="true">→</span></button></div></footer>
+      <p class="work-note">Your work lives in Photopea. Remember to save your editable PSD as you go.</p>
+    </main>
+  </div>
+  <dialog id="media-dialog" class="media-dialog" aria-labelledby="media-title"><div class="media-header"><div><span class="section-kicker">TAKE A CLOSER LOOK</span><h2 id="media-title">Reference image</h2></div><button class="icon-button close-dialog" data-close="media-dialog" aria-label="Close reference"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="media-body"><img id="media-image" src="assets/turkey-escape-goal.png" alt=""></div><div class="media-footer"><p id="media-caption"></p><a id="media-download" class="download-button" download>Download image <span aria-hidden="true">↓</span></a></div></dialog>
+  <dialog id="resource-dialog" class="resource-dialog" aria-labelledby="resource-title"><div class="resource-header"><div><span class="section-kicker">YOUR WORKSHOP TOOLKIT</span><h2 id="resource-title">Everything you need.</h2></div><button class="icon-button close-dialog" data-close="resource-dialog" aria-label="Close resources"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="resource-tabs" role="tablist" aria-label="Resource categories"><button role="tab" id="tab-files" data-resource-tab="files" aria-selected="true" aria-controls="resource-panel">Project files</button><button role="tab" id="tab-guides" data-resource-tab="guides" aria-selected="false" aria-controls="resource-panel">Tool guides</button><button role="tab" id="tab-help" data-resource-tab="help" aria-selected="false" aria-controls="resource-panel">Find a fix</button></div><section id="resource-panel" role="tabpanel" aria-labelledby="tab-files"></section></dialog>
+  <dialog id="step-dialog" class="step-dialog" aria-labelledby="steps-title"><div class="resource-header"><div><span class="section-kicker">FREE BIRDS</span><h2 id="steps-title">Your workshop</h2></div><button class="icon-button close-dialog" data-close="step-dialog" aria-label="Close lesson steps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><nav id="mobile-nav" class="lesson-nav" aria-label="Choose a lesson step"></nav></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><div class="noscript-message">Please enable JavaScript to use this step-by-step workshop. You can still <a href="assets/turkey-source.webp">download the turkey source</a> and <a href="assets/falling-leaves.png">leaf sheet</a>.</div></noscript>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "vidyas-cover-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check app.js && node --check lessons.js"
+  }
+}
