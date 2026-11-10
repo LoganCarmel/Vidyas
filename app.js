@@ -3,6 +3,16 @@ import { lessons } from './lessons.js';
 const $ = (selector) => document.querySelector(selector);
 const STORAGE_KEY = 'cover-lab-turkey-escape-v1';
 const ids = new Set(lessons.map((lesson) => lesson.id));
+const chapters = [
+  { name: 'Setup', start: 0, end: 2 },
+  { name: 'Characters', start: 2, end: 6 },
+  { name: 'Cover design', start: 6, end: 13 },
+  { name: 'Finish', start: 13, end: 16 }
+];
+const chapterIndexFor = (id) => {
+  const index = lessons.findIndex((lesson) => lesson.id === id);
+  return chapters.findIndex((chapter) => index >= chapter.start && index < chapter.end);
+};
 const paths = {
   check: '<path d="m5 12 4 4L19 6"/>',
   expand: '<path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/>',
@@ -24,6 +34,8 @@ const state = {
   tasks: saved.tasks && typeof saved.tasks === 'object' && !Array.isArray(saved.tasks) ? saved.tasks : {}
 };
 if (!ids.has(hashId)) history.replaceState(null, '', `#${state.current}`);
+let expandedChapter = chapterIndexFor(state.current);
+let navigationLesson = state.current;
 let resourceTab = 'files';
 let toastTimer;
 let mediaOpener;
@@ -43,15 +55,30 @@ function taskSet(lesson = currentLesson()) {
   return new Set(Array.isArray(state.tasks[lesson.id]) ? state.tasks[lesson.id].filter((index) => Number.isInteger(index) && index >= 0 && index < lesson.steps.length) : []);
 }
 function renderNav() {
-  const links = lessons.map((lesson, index) => `<a class="nav-step${state.current === lesson.id ? ' active' : ''}${state.completed.has(lesson.id) ? ' completed' : ''}" href="#${lesson.id}" data-step="${lesson.id}"${state.current === lesson.id ? ' aria-current="step"' : ''}><span class="nav-number">${state.completed.has(lesson.id) ? icon('check') : String(index + 1).padStart(2, '0')}</span><span>${esc(lesson.shortTitle)}</span></a>`).join('');
-  $('#desktop-nav').innerHTML = links;
-  $('#mobile-nav').innerHTML = links;
+  if (navigationLesson !== state.current) {
+    expandedChapter = chapterIndexFor(state.current);
+    navigationLesson = state.current;
+  }
+  const markup = (prefix) => chapters.map((chapter, chapterIndex) => {
+    const items = lessons.slice(chapter.start, chapter.end);
+    const completed = items.filter((lesson) => state.completed.has(lesson.id)).length;
+    const current = items.some((lesson) => lesson.id === state.current);
+    const open = expandedChapter === chapterIndex;
+    const linksId = `${prefix}-chapter-${chapterIndex}`;
+    return `<section class="nav-chapter${current ? ' is-current' : ''}" aria-label="${esc(chapter.name)}"><button type="button" class="nav-chapter-heading" data-chapter="${chapterIndex}" aria-expanded="${open}" aria-controls="${linksId}"><span class="chapter-number">${String(chapterIndex + 1).padStart(2, '0')}</span><span>${esc(chapter.name)}</span><span class="chapter-count" aria-label="${completed} of ${items.length} steps complete">${completed}/${items.length}</span></button><div class="chapter-links" id="${linksId}"${open ? '' : ' hidden'}>${items.map((lesson, itemIndex) => `<a class="nav-step${state.current === lesson.id ? ' active' : ''}${state.completed.has(lesson.id) ? ' completed' : ''}" href="#${lesson.id}" data-step="${lesson.id}"${state.current === lesson.id ? ' aria-current="step"' : ''}><span class="nav-number">${state.completed.has(lesson.id) ? icon('check') : String(chapter.start + itemIndex + 1).padStart(2, '0')}</span><span>${esc(lesson.shortTitle)}</span></a>`).join('')}</div></section>`;
+  }).join('');
+  $('#desktop-nav').innerHTML = markup('desktop');
+  $('#mobile-nav').innerHTML = markup('mobile');
   $('#progress-count').textContent = `${state.completed.size} / ${lessons.length}`;
+  $('#mini-progress').textContent = `${state.completed.size} of ${lessons.length} complete`;
+  $('#progress-percent').textContent = `${Math.round(state.completed.size / lessons.length * 100)}%`;
   $('#progress-fill').style.width = `${state.completed.size / lessons.length * 100}%`;
   const track = $('.progress-track');
   track.setAttribute('aria-valuenow', String(state.completed.size));
   track.setAttribute('aria-valuemax', String(lessons.length));
   $('#finish-banner').hidden = state.completed.size !== lessons.length;
+  const activeLink = $('#desktop-nav .nav-step.active');
+  if (activeLink?.getClientRects().length) activeLink.scrollIntoView({ block: 'nearest', inline: 'nearest' });
 }
 function renderInstructions() {
   const lesson = currentLesson(), checked = taskSet(lesson);
@@ -63,24 +90,28 @@ function renderVisual(lesson) {
   if (gallery.length) {
     const selected = Math.min(imageChoices[lesson.id] || 0, gallery.length - 1);
     const image = gallery[selected], isCover = image.src.includes('goal');
-    const galleryNav = gallery.length > 1 ? `<div class="gallery-nav"><span>More views</span>${gallery.map((_, index) => `<button data-gallery="${index}" aria-pressed="${index === selected}" aria-label="Show reference image ${index + 1} of ${gallery.length}">${index + 1}</button>`).join('')}</div>` : '';
-    return `<section class="visual-card"><div class="visual-header"><span>${isCover ? 'THE LAYOUT REFERENCE' : 'YOUR VISUAL REFERENCE'}${gallery.length > 1 ? ` · ${selected + 1}/${gallery.length}` : ''}</span><button class="zoom-link" data-media="${esc(image.src)}" data-media-title="${esc(lesson.shortTitle)}" data-media-alt="${esc(image.alt)}" data-media-caption="${esc(image.caption)}">${icon('expand')} Zoom in</button></div><button class="image-zoom-button" data-media="${esc(image.src)}" data-media-title="${esc(lesson.shortTitle)}" data-media-alt="${esc(image.alt)}" data-media-caption="${esc(image.caption)}" aria-label="Enlarge visual reference"><img class="reference-image${isCover ? ' cover-image' : ''}" src="${esc(image.src)}" alt="${esc(image.alt)}"></button>${galleryNav}<p class="visual-caption">${esc(image.caption)}</p></section>`;
+    const galleryNav = gallery.length > 1 ? `<div class="gallery-nav"><span>More views</span>${gallery.map((item, index) => `<button data-gallery="${index}" aria-pressed="${index === selected}" aria-label="Show reference image ${index + 1} of ${gallery.length}"><img src="${esc(item.src)}" alt=""><span aria-hidden="true">${index + 1}</span></button>`).join('')}</div>` : '';
+    return `<section class="visual-card"><div class="visual-header"><span>${isCover ? 'The layout reference' : 'Visual reference'}${gallery.length > 1 ? ` · ${selected + 1}/${gallery.length}` : ''}</span><button class="zoom-link" data-media="${esc(image.src)}" data-media-title="${esc(lesson.shortTitle)}" data-media-alt="${esc(image.alt)}" data-media-caption="${esc(image.caption)}">${icon('expand')} Zoom in</button></div><div class="reference-stage"><button class="image-zoom-button" data-media="${esc(image.src)}" data-media-title="${esc(lesson.shortTitle)}" data-media-alt="${esc(image.alt)}" data-media-caption="${esc(image.caption)}" aria-label="Enlarge visual reference"><img class="reference-image${isCover ? ' cover-image' : ''}" src="${esc(image.src)}" alt="${esc(image.alt)}"></button></div>${galleryNav}<p class="visual-caption">${esc(image.caption)}</p></section>`;
   }
   if (lesson.id === 'save-psd') {
-    return `<section class="visual-card"><div class="visual-header"><span>KEEP BOTH VERSIONS</span><span>PSD + PNG</span></div><div class="layer-demo"><div class="layer-row"><span class="layer-dot turkey">PSD</span>Editable artwork<small>YOUR WORKING FILE</small></div><div class="layer-row"><span class="layer-dot circle">PNG</span>One finished picture<small>YOUR EXPORT</small></div></div><p class="visual-caption">Save a PSD to keep your layers and text. Export a PNG when you need a picture to share.</p></section>`;
+    return `<section class="visual-card"><div class="visual-header"><span>Keep both versions</span><span>PSD + PNG</span></div><div class="reference-stage"><div class="layer-demo"><div class="layer-row"><span class="layer-dot turkey">PSD</span>Editable artwork<small>YOUR WORKING FILE</small></div><div class="layer-row"><span class="layer-dot circle">PNG</span>One finished picture<small>YOUR EXPORT</small></div></div></div><p class="visual-caption">Save a PSD to keep your layers and text. Export a PNG when you need a picture to share.</p></section>`;
   }
-  return `<section class="visual-card"><div class="visual-header"><span>YOUR TITLE PREVIEW</span><span>KEEP IT EDITABLE</span></div><div class="demo-title outlined" aria-label="Cream Free Birds title with a maroon outline"><span>FREE</span><span>BIRDS</span></div><p class="visual-caption">A dark outline helps light letters stand out. Your font and arrangement can look different.</p></section>`;
+  return `<section class="visual-card"><div class="visual-header"><span>Your title preview</span><span>Keep it editable</span></div><div class="reference-stage"><div class="demo-title outlined" aria-label="Cream Free Birds title with a maroon outline"><span>FREE</span><span>BIRDS</span></div></div><p class="visual-caption">A dark outline helps light letters stand out. Your font and arrangement can look different.</p></section>`;
 }
 function updateFooter() {
   const lesson = currentLesson(), index = lessons.indexOf(lesson), completedAll = state.completed.size === lessons.length;
   $('#previous').disabled = index === 0;
   $('#next').hidden = index === lessons.length - 1;
+  $('#next').innerHTML = `Skip ahead <span aria-hidden="true">→</span>`;
+  $('#next-title').textContent = lessons[index + 1]?.shortTitle || 'Your next creation';
   $('#complete').disabled = completedAll && index === lessons.length - 1;
-  $('#complete').innerHTML = completedAll && index === lessons.length - 1 ? `${icon('check')} Workshop complete` : `${lesson.saveCheckpoint ? 'I saved my PSD — continue' : state.completed.has(lesson.id) ? 'Continue' : index === lessons.length - 1 ? 'Finish this workshop' : 'Mark done & continue'} ${icon('arrow')}`;
+  $('#complete').innerHTML = completedAll && index === lessons.length - 1 ? `${icon('check')} Workshop complete` : `${lesson.saveCheckpoint ? 'I saved my PSD — continue' : state.completed.has(lesson.id) ? 'Continue' : index === lessons.length - 1 ? 'Finish this workshop' : 'Complete step'} ${icon('arrow')}`;
 }
 function render() {
   const lesson = currentLesson(), index = lessons.indexOf(lesson);
   document.title = `${lesson.shortTitle} · Free Birds · Cover Lab`;
+  $('#chapter-label').textContent = chapters.find((chapter) => index >= chapter.start && index < chapter.end).name;
+  $('#lesson-position').textContent = `Step ${String(index + 1).padStart(2, '0')} of ${lessons.length}`;
   $('#lesson-eyebrow').textContent = lesson.eyebrow;
   $('#lesson-title').textContent = lesson.title;
   $('#lesson-goal').textContent = lesson.goal;
@@ -102,6 +133,7 @@ function render() {
 function goTo(id, { focus = true } = {}) {
   if (!ids.has(id)) return;
   state.current = id;
+  expandedChapter = chapterIndexFor(id);
   history.pushState(null, '', `#${id}`);
   $('#step-dialog').close();
   render();
@@ -174,6 +206,14 @@ async function copyColor(value) {
   }
 }
 document.addEventListener('click', (event) => {
+  const chapter = event.target.closest('[data-chapter]');
+  if (chapter) {
+    const index = Number(chapter.dataset.chapter), navId = chapter.closest('nav').id;
+    expandedChapter = expandedChapter === index ? -1 : index;
+    renderNav();
+    $(`#${navId} [data-chapter="${index}"]`)?.focus({ preventScroll: true });
+    return;
+  }
   const step = event.target.closest('[data-step]');
   if (step) { event.preventDefault(); goTo(step.dataset.step); return; }
   const task = event.target.closest('[data-task]');
@@ -194,7 +234,12 @@ document.addEventListener('click', (event) => {
   if (action === 'goal') openMedia({ src: 'assets/turkey-escape-goal.png', title: 'Our layout reference', alt: 'Game cover layout reference', caption: 'Use the arrangement as a guide. Our tutorial title is Free Birds. Your source artwork and small details can look different.' });
   if (action === 'resources') openResources();
   if (action === 'all-help') openResources('help');
-  if (action === 'steps') $('#step-dialog').showModal();
+  if (action === 'steps') {
+    expandedChapter = chapterIndexFor(state.current);
+    renderNav();
+    $('#step-dialog').showModal();
+    $('#mobile-nav .nav-step.active')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
   if (action === 'reset') { state.completed.clear(); state.tasks = {}; goTo(lessons[0].id); notify('Progress reset. Your Photopea files are not affected.'); }
 });
 document.addEventListener('input', (event) => { if (event.target.id === 'help-query') renderHelpResults(event.target.value); });

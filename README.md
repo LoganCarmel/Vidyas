@@ -2,6 +2,8 @@
 
 A self-paced, 16-step beginner tutorial in the Vidyas repository. Students make a **Free Birds** game cover in Photopea while learning selections, layers, color fills, transforms, alignment, editable text, and exports. The site provides numbered instructions, checkpoints, troubleshooting, downloadable source files, and zoomable visual references. Some lessons have a gallery of multiple views.
 
+The interface puts a large visual stage before the instructions when the layout stacks, with thumbnail buttons for switching between reference images. Four collapsible chapters—Setup, Characters, Cover design, and Finish—organize the lesson navigation; the current lesson's chapter opens automatically. Contextual help stays beside the work on wide screens or follows the instructions on smaller screens, and the primary completion action is distinct from skipping ahead.
+
 The supplied artwork titled **Turkey Escape** is a **layout reference**, not an exact image students must reproduce. It demonstrates the arrangement of the title, two birds, circle, and leaves. The tutorial's title is **Free Birds**, and its source artwork and small details can differ from the reference.
 
 This is a standalone static website: HTML, CSS, JavaScript, and local images. It requires no package installation, build command, database, account system, or API key.
