@@ -150,7 +150,7 @@ export const lessons = [
       "Download the turkey source using the link at the top of this lesson. Keep your Free Birds cover open in Photopea.",
       "Choose File → Open & Place and select the source image. It should appear as a new layer inside your cover.",
       "If a transformation box appears, confirm it with the check mark or Enter. In the Layers panel, double-click the imported layer’s name, type Source poster, and press Enter. Double-click the name, rather than the small image thumbnail.",
-      "Click Source poster in the Layers panel. Right-click the selection tool near the top of the left toolbar and choose Polygonal Lasso Select. The group may currently show a rectangle, ellipse, or lasso icon.",
+      "Click Source poster in the Layers panel. Press L to activate the lasso tool. Right-click its button in the left toolbar and choose Polygonal Lasso Select.",
       "Choose Replace in the selection controls at the top to start a new selection.",
       "Zoom in, then return to Polygonal Lasso Select. Click once on the first bird’s edge to begin. Keep clicking nearby points around its visible outline; use shorter gaps around curves. When you reach the start again, double-click to finish. A moving dotted outline should appear."
     ],
@@ -473,7 +473,7 @@ export const lessons = [
     "steps": [
       "Make sure Birds is the highlighted layer in the Layers panel.",
       "Click the page-shaped New Layer button at the bottom of the Layers panel, beside the trash can. Double-click the new layer’s name, type Yellow circle, and press Enter. Its checkerboard thumbnail means it is empty and transparent.",
-      "Right-click the current selection tool in the toolbar and choose Ellipse Select from its menu. Use the selection tool, not the vector Ellipse shape tool.",
+      "Press M to activate Rectangle or Ellipse Select. Right-click that dotted rectangle or oval button near the top of the toolbar and choose Ellipse Select. Use this selection tool, not the solid Ellipse shape tool.",
       "Choose Replace in the selection controls at the top. Each new outline will replace the previous one.",
       "Click and drag to start an oval. Keep the mouse button held down.",
       "While you are still dragging, hold Shift. What happens to the oval? Release the mouse first, then release Shift. You should now have a large dotted circle."
@@ -925,7 +925,7 @@ export const lessons = [
       "A stroke is a border around the text. If you are still editing the words, click the check mark in the top options bar first. Then click the Free Birds text layer in the Layers panel.",
       "Click eff, the effect button at the bottom of the Layers panel, and choose Stroke.",
       "In the Stroke settings, click the color swatch and choose maroon, #701818. Confirm the color picker.",
-      "Set Size to 13 px, Position to Outside, and Opacity to 100%.",
+      "Type 13 in Size and press Enter to apply it. Set Position to Outside and Opacity to 100%.",
       "Click OK to apply the stroke. Zoom out and check that the cream letters have a clear maroon outline.",
       "SAVE YOUR WORK BEFORE WE CONTINUE: choose File → Save as PSD and save your latest changes before adding leaves."
     ],
@@ -1021,7 +1021,7 @@ export const lessons = [
       "Check that you selected the leaf shape, not a rectangle of white background. Use Subtract to remove selected white areas or Unite to restore missed leaf parts.",
       "Choose Edit → Copy. Click the Free Birds document tab above the canvas, then choose Edit → Paste. The leaf appears on a new layer.",
       "With the leaf layer selected, choose Edit → Free Transform. Click the chain icon between W and H at the top if it is off, to keep the proportions linked. Drag a corner to resize, drag just outside the box to rotate, and drag inside it to position the leaf away from the title and faces. Press Enter to confirm.",
-      "Return to the leaf-source tab, select another leaf, and copy it. Switch back to Free Birds to paste and transform it. Repeat until you have three leaves. Rename their layers Leaf 1, Leaf 2, and Leaf 3, and try different sizes or angles.",
+      "Return to the leaf-source tab and choose your lasso tool again. Click Replace at the top before tracing a different leaf, then copy it. Switch back to Free Birds to paste and transform it. Repeat until you have three leaves. Rename their layers Leaf 1, Leaf 2, and Leaf 3, and try different sizes or angles.",
       "Download the Everyone badge using the link at the top of this lesson. In your Free Birds cover, choose File → Open & Place and select the badge. Confirm with the check mark or Enter, then name its layer Rating badge.",
       "Select Rating badge and choose Edit → Free Transform. Click the chain icon between W and H at the top if it is off, to keep the proportions linked. Drag a corner until the badge is about one-tenth as wide as the cover. Keep it upright and avoid stretching it.",
       "Drag inside the transformation box to place the badge in the bottom-left corner, leaving a small margin from both edges. Keep the title and important character details clear.",
@@ -1039,7 +1039,7 @@ export const lessons = [
       },
       {
         "question": "Copy brought in a leaf I selected earlier.",
-        "answer": "Return to the leaf source tab, select the current leaf, and copy it again immediately before switching to the cover and pasting."
+        "answer": "Return to the leaf source tab, choose your lasso tool, and click Replace at the top. Trace the new leaf, then copy it immediately before switching to the cover and pasting."
       },
       {
         "question": "I keep moving the turkey instead of a leaf.",

@@ -1,4 +1,4 @@
-import { lessons } from './lessons.js?v=12';
+import { lessons } from './lessons.js?v=13';
 
 const $ = (selector) => document.querySelector(selector);
 const STORAGE_KEY = 'cover-lab-turkey-escape-v1';
