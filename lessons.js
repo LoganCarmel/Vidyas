@@ -465,12 +465,12 @@ export const lessons = [
       "Shift"
     ],
     "steps": [
-      "Choose Select → Deselect so the bird selection does not interfere.",
+      "Make sure Birds is the highlighted layer in the Layers panel.",
       "Use the New Layer button in the Layers panel to create an empty pixel layer. Name it Yellow circle.",
       "Right-click the current selection tool in the toolbar and choose Ellipse Select from its menu. Use the selection tool, not the vector Ellipse shape tool.",
-      "Choose Replace in the selection controls at the top.",
-      "Drag an oval and notice its shape. Choose Select → Deselect to clear this practice selection.",
-      "Drag again and hold Shift while you are dragging. Notice how the oval becomes a perfect circle. Release the mouse before releasing Shift, leaving a large circular selection on the canvas."
+      "Choose Replace in the selection controls at the top. Each new outline will replace the previous one.",
+      "Click and drag to start an oval. Keep the mouse button held down.",
+      "While you are still dragging, hold Shift. What happens to the oval? Release the mouse first, then release Shift. You should now have a large dotted circle."
     ],
     "checkpoint": "A dotted circle is visible on the empty Yellow circle layer. It has not been filled yet.",
     "help": [
@@ -480,7 +480,7 @@ export const lessons = [
       },
       {
         "question": "My new circle added to an old selection.",
-        "answer": "Choose Select → Deselect, check that Replace is active, then draw the circle again."
+        "answer": "Click Replace in the selection controls at the top, then draw again. The new outline will replace the old one."
       },
       {
         "question": "It still looks like an oval.",
@@ -500,7 +500,7 @@ export const lessons = [
       {
         "src": "assets/oval-before-shift.png",
         "alt": "An oval selection drawn before constraining it with Shift.",
-        "caption": "An unrestricted drag makes an oval. Hold Shift during a new drag to make a circle."
+        "caption": "Start an oval, then hold Shift while you are still dragging to turn it into a circle."
       }
     ],
     "sections": [
@@ -530,7 +530,7 @@ export const lessons = [
           {
             "src": "assets/oval-before-shift.png",
             "alt": "An oval selection drawn before constraining it with Shift.",
-            "caption": "An unrestricted drag makes an oval. Hold Shift during a new drag to make a circle."
+            "caption": "Start an oval, then hold Shift while you are still dragging to turn it into a circle."
           }
         ]
       }
@@ -539,9 +539,9 @@ export const lessons = [
   {
     "id": "fill-center-circle",
     "shortTitle": "Fill and center it",
-    "title": "Fill the circle before aligning it",
+    "title": "Fill and center the yellow circle",
     "eyebrow": "PAINT BUCKET + ALIGNMENT",
-    "goal": "Paint the circular selection pale yellow, then center its pixels on the canvas.",
+    "goal": "Fill the circle with pale yellow and place it in the center of your cover.",
     "time": "6 min",
     "tools": [
       "Paint Bucket",
@@ -553,16 +553,16 @@ export const lessons = [
     "steps": [
       "Keep the circle selection active and select the empty Yellow circle layer.",
       "Set the foreground color to pale yellow, #F3EF9B. Choose Paint Bucket and click inside the circle to fill it.",
-      "Choose Select → Deselect. The painted circle should stay visible after the dotted outline disappears.",
       "Choose the Move tool and check that Yellow circle is still the highlighted layer.",
-      "Choose Select → All to use the entire canvas as the alignment reference.",
-      "Click Center Horizontally, the second alignment button, then Center Vertically, the sixth alignment button. Finally, choose Select → Deselect."
+      "Open the Select menu and click All. A dotted outline should now run around the whole canvas, so the buttons will center the circle within the cover.",
+      "Click Center Horizontally, the second alignment button, then Center Vertically, the sixth alignment button.",
+      "Remove the dotted border: open the Select menu at the top of Photopea and click Deselect. Your yellow circle stays in place."
     ],
     "checkpoint": "A solid pale yellow circle is centered on the cover. It may cover the birds until you fix the layer order next.",
     "help": [
       {
         "question": "The alignment buttons do nothing.",
-        "answer": "An empty layer has no painted pixels to align. Fill the circle first, deselect, choose Move, highlight Yellow circle, then Select All and use the alignment buttons."
+        "answer": "Fill the circle first. Then choose Move, highlight Yellow circle, open the Select menu and click All, and use the alignment buttons."
       },
       {
         "question": "The birds moved instead of the circle.",
@@ -594,14 +594,14 @@ export const lessons = [
         "title": "Fill the circular selection pale yellow",
         "steps": [
           0,
-          1,
-          2
+          1
         ],
         "images": []
       },
       {
         "title": "Center the painted circle on the canvas",
         "steps": [
+          2,
           3,
           4,
           5

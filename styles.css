@@ -106,13 +106,7 @@ main { max-width: 1350px; margin: 0 auto; padding: 32px 32px 24px; }
 .heading-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
 h1 { max-width: 1100px; margin: 0; font-size: 32px; font-weight: 700; line-height: 1.2; letter-spacing: -.6px; outline: none; }
 .step-counter { display: none; }
-.lesson-goal { max-width: 850px; margin: 13px 0 17px; color: #4b453e; font-size: 16px; line-height: 1.7; }
-.lesson-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
-.eyebrow { padding-right: 12px; border-right: 1px solid var(--line); color: #625b52; font-size: 10px; font-weight: 600; }
-.time-label { display: flex; align-items: center; gap: 5px; color: #625b52; font-size: 11px; white-space: nowrap; }
-.time-label svg { width: 13px; height: 13px; }
-.tool-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.tool-chip { padding: 0 7px; border-left: 1px solid #d2c9bf; color: #625b52; font-size: 11px; line-height: 1.5; }
+.lesson-goal { max-width: 850px; margin: 13px 0 0; color: #4b453e; font-size: 16px; line-height: 1.7; }
 .section-kicker { display: block; color: #514b43; font-size: 11px; font-weight: 700; }
 .walkthrough-heading { display: flex; align-items: center; justify-content: space-between; gap: 22px; margin: 0 0 19px; }
 .walkthrough-heading .section-kicker { color: var(--ink); font-size: 18px; }
@@ -345,11 +339,6 @@ dialog::backdrop { background: #2b251e73; }
   #lesson-position { font-size: 10px; }
   h1 { font-size: 27px; }
   .lesson-goal { font-size: 14px; }
-  .lesson-meta { gap: 8px; }
-  .eyebrow { padding-right: 8px; font-size: 9px; }
-  .time-label { font-size: 10px; }
-  .tool-chips { width: 100%; gap: 4px; }
-  .tool-chip { font-size: 10px; }
   .walkthrough-heading .section-kicker { font-size: 17px; }
   .walkthrough-section-header { gap: 7px; }
   .walkthrough-section-header h2 { font-size: 21px; }
